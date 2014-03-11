@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-11T21:03:48+08:00</updated>
+ <updated>2014-03-11T22:13:10+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -13,16 +13,19 @@
 
  
  <entry>
-   <title>Openerp Notes (0)</title>
-   <link href="http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%280%29"/>
+   <title>Openerp Notes (0).start</title>
+   <link href="http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%280%29.Start"/>
    <updated>2014-03-11T00:00:00+08:00</updated>
-   <id>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-(0)</id>
+   <id>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-(0).Start</id>
    <content type="html">&lt;h2 id=&quot;start_here&quot;&gt;Start here!&lt;/h2&gt;
 
 &lt;h3 id=&quot;working_with_openerp&quot;&gt;Working with OpenERP&lt;/h3&gt;
 
 &lt;p&gt;Learn to utilize OpenERP to transform and streamline your business&lt;/p&gt;
-&lt;!--![Face](https://lh5.googleusercontent.com/-GripjIMCLVE/Ux8HdGidWII/AAAAAAAAAL4/obPzlzxwhp4/s800/working_with_openerp.png &quot;Working with OpenERP&quot;)--&gt;</content>
+&lt;!--![Face](https://lh5.googleusercontent.com/-GripjIMCLVE/Ux8HdGidWII/AAAAAAAAAL4/obPzlzxwhp4/s800/working_with_openerp.png &quot;Working with OpenERP&quot;)--&gt;
+&lt;pre&gt;&lt;code&gt;Working with OpenERP provides a comprehensive walkthrough for installing, configuring, and implementing OpenERP in real-world business environments, understanding the value of ERP systems and best practice approaches for getting a system up and running in your organization.
+
+This book is for anyone that is interested in implementing an ERP system in a business organization, and IT professionals looking to get a functional understanding of OpenERP.&lt;/code&gt;&lt;/pre&gt;</content>
  </entry>
  
  

@@ -5,21 +5,24 @@
         <description>两招 - Jianhua Zhang</description>
         <link>http://www.jeffzhang.cn</link>
         <link>http://www.jeffzhang.cn</link>
-        <lastBuildDate>2014-03-11T21:03:48+08:00</lastBuildDate>
-        <pubDate>2014-03-11T21:03:48+08:00</pubDate>
+        <lastBuildDate>2014-03-11T22:13:10+08:00</lastBuildDate>
+        <pubDate>2014-03-11T22:13:10+08:00</pubDate>
         <ttl>1800</ttl>
 
 
         <item>
-                <title>Openerp Notes (0)</title>
+                <title>Openerp Notes (0).start</title>
                 <description>&lt;h2 id=&quot;start_here&quot;&gt;Start here!&lt;/h2&gt;
 
 &lt;h3 id=&quot;working_with_openerp&quot;&gt;Working with OpenERP&lt;/h3&gt;
 
 &lt;p&gt;Learn to utilize OpenERP to transform and streamline your business&lt;/p&gt;
-&lt;!--![Face](https://lh5.googleusercontent.com/-GripjIMCLVE/Ux8HdGidWII/AAAAAAAAAL4/obPzlzxwhp4/s800/working_with_openerp.png &quot;Working with OpenERP&quot;)--&gt;</description>
-                <link>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%280%29</link>
-                <guid>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-(0)</guid>
+&lt;!--![Face](https://lh5.googleusercontent.com/-GripjIMCLVE/Ux8HdGidWII/AAAAAAAAAL4/obPzlzxwhp4/s800/working_with_openerp.png &quot;Working with OpenERP&quot;)--&gt;
+&lt;pre&gt;&lt;code&gt;Working with OpenERP provides a comprehensive walkthrough for installing, configuring, and implementing OpenERP in real-world business environments, understanding the value of ERP systems and best practice approaches for getting a system up and running in your organization.
+
+This book is for anyone that is interested in implementing an ERP system in a business organization, and IT professionals looking to get a functional understanding of OpenERP.&lt;/code&gt;&lt;/pre&gt;</description>
+                <link>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%280%29.Start</link>
+                <guid>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-(0).Start</guid>
                 <pubDate>2014-03-11T00:00:00+08:00</pubDate>
         </item>
 
