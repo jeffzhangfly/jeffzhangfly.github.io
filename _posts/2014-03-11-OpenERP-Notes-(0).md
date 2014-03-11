@@ -1,7 +1,7 @@
 ---
 layout: post
 category : OpenERP
-tagline: "Let's go!"
+tagline:
 tags : [Python, OpenERP]
 ---
 {% include JB/setup %}
