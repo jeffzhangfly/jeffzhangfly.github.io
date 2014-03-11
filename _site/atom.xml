@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-11T22:13:10+08:00</updated>
+ <updated>2014-03-11T22:19:51+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -23,9 +23,13 @@
 
 &lt;p&gt;Learn to utilize OpenERP to transform and streamline your business&lt;/p&gt;
 &lt;!--![Face](https://lh5.googleusercontent.com/-GripjIMCLVE/Ux8HdGidWII/AAAAAAAAAL4/obPzlzxwhp4/s800/working_with_openerp.png &quot;Working with OpenERP&quot;)--&gt;
-&lt;pre&gt;&lt;code&gt;Working with OpenERP provides a comprehensive walkthrough for installing, configuring, and implementing OpenERP in real-world business environments, understanding the value of ERP systems and best practice approaches for getting a system up and running in your organization.
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Working with OpenERP&lt;/em&gt; provides a comprehensive walkthrough for installing, configuring, and implementing OpenERP in real-world business environments, understanding the value of ERP systems and &lt;strong&gt;best practice&lt;/strong&gt; approaches for getting a system up and running in your organization.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-This book is for anyone that is interested in implementing an ERP system in a business organization, and IT professionals looking to get a functional understanding of OpenERP.&lt;/code&gt;&lt;/pre&gt;</content>
+&lt;blockquote&gt;
+&lt;p&gt;This book is for anyone that is interested in implementing an ERP system in a business organization, and IT professionals looking to get a functional understanding of OpenERP.&lt;/p&gt;
+&lt;/blockquote&gt;</content>
  </entry>
  
  
