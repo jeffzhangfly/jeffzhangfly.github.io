@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-12T22:40:11+08:00</updated>
+ <updated>2014-03-12T22:48:58+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -67,6 +67,10 @@
    <id>http://www.jeffzhang.cn/other/2014/03/10/Blog-Reload</id>
    <content type="html">
 &lt;p&gt;由于一些特殊的功能要求，把Blog从Wordpress换成Jekyll了。懒得迁移数据了，以前的文章也没什么意思，重新开始吧。&lt;/p&gt;
+
+&lt;p&gt;测试下公式:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1- \theta_0) \cdot {(\frac{\sqrt{2\pi}b_{min}e^{(-\frac{1}{2\lambda^2}d_{max})}}{n_p} )^{d} } \cdot\frac{1}{m(M_G) \cdot n_p^2} \leq E\tau \leq (1-\theta_0) \cdot {(\frac{\sqrt{2\pi}b_{max}}{n_p})^{d} } \cdot\frac{1}{m(M_G) \cdot e^{(-4db_{max}^2b_{min}^{-2})}\cdot n_p^2}&lt;/script&gt;
 
 </content>
  </entry>
