@@ -10,3 +10,4 @@ http://www.jeffzhang.cn/tags.html
 
 http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%281%29.-%E5%BA%8F
 http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%280%29.-Start
+http://www.jeffzhang.cn/other/2014/03/10/Blog-Reload

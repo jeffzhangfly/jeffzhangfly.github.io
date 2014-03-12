@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-12T21:30:03+08:00</updated>
+ <updated>2014-03-12T22:12:15+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -57,6 +57,17 @@
 &lt;blockquote&gt;
   &lt;p&gt;This book is for anyone that is interested in implementing an ERP system in a business organization, and IT professionals looking to get a functional understanding of OpenERP.&lt;/p&gt;
 &lt;/blockquote&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Blog Reload</title>
+   <link href="http://www.jeffzhang.cn/other/2014/03/10/Blog-Reload"/>
+   <updated>2014-03-10T00:00:00+08:00</updated>
+   <id>http://www.jeffzhang.cn/other/2014/03/10/Blog-Reload</id>
+   <content type="html">
+&lt;p&gt;由于一些特殊的功能要求，把Blog从Wordpress换成Jekyll了。懒得迁移数据了，以前的文章也没什么意思，重新开始吧。&lt;/p&gt;
+
 </content>
  </entry>
  
