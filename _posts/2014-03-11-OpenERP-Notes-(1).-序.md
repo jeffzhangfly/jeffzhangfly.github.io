@@ -19,4 +19,3 @@ ERP系统核心应用一般包括：
 ###1.1 Sales Orders(SO)
 Selling products to your customer.
 
-$$\min f(x) = \sum_{i=0}^{n}\frac{x^2}{\exp^i}123\times23456$$
