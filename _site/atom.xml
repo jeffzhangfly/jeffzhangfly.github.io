@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-12T21:24:01+08:00</updated>
+ <updated>2014-03-12T21:30:03+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -34,7 +34,6 @@
 &lt;h3 id=&quot;sales-ordersso&quot;&gt;1.1 Sales Orders(SO)&lt;/h3&gt;
 &lt;p&gt;Selling products to your customer.&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\min f(x) = \sum_{i=0}^{n}\frac{x^2}{\exp^i}123\times23456&lt;/script&gt;
 </content>
  </entry>
  
