@@ -5,26 +5,55 @@
         <description>两招 - Jianhua Zhang</description>
         <link>http://www.jeffzhang.cn</link>
         <link>http://www.jeffzhang.cn</link>
-        <lastBuildDate>2014-03-11T22:22:24+08:00</lastBuildDate>
-        <pubDate>2014-03-11T22:22:24+08:00</pubDate>
+        <lastBuildDate>2014-03-12T21:24:01+08:00</lastBuildDate>
+        <pubDate>2014-03-12T21:24:01+08:00</pubDate>
         <ttl>1800</ttl>
 
 
         <item>
+                <title>Openerp Notes (1). 序</title>
+                <description>
+&lt;h2 id=&quot;erp&quot;&gt;1. 通用ERP模块&lt;/h2&gt;
+
+&lt;p&gt;ERP系统核心应用一般包括：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sales Orders(SO)&lt;/li&gt;
+  &lt;li&gt;Purchase orders(PO)&lt;/li&gt;
+  &lt;li&gt;Accounting and finance(General Ledger, GL)&lt;/li&gt;
+  &lt;li&gt;Manufacturing Resource Planning(MRP)&lt;/li&gt;
+  &lt;li&gt;Customer Relationship Management(CRM)&lt;/li&gt;
+  &lt;li&gt;Human Resources(HR)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;sales-ordersso&quot;&gt;1.1 Sales Orders(SO)&lt;/h3&gt;
+&lt;p&gt;Selling products to your customer.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\min f(x) = \sum_{i=0}^{n}\frac{x^2}{\exp^i}123\times23456&lt;/script&gt;
+</description>
+                <link>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%281%29.-%E5%BA%8F</link>
+                <guid>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-(1).-序</guid>
+                <pubDate>2014-03-11T00:00:00+08:00</pubDate>
+        </item>
+
+        <item>
                 <title>Openerp Notes (0). Start</title>
-                <description>&lt;h2 id=&quot;start_here&quot;&gt;Start here!&lt;/h2&gt;
+                <description>
+&lt;h2 id=&quot;start-here&quot;&gt;Start here!&lt;/h2&gt;
 
-&lt;h3 id=&quot;working_with_openerp&quot;&gt;Working with OpenERP&lt;/h3&gt;
-
+&lt;h3 id=&quot;working-with-openerp&quot;&gt;Working with OpenERP&lt;/h3&gt;
 &lt;p&gt;Learn to utilize OpenERP to transform and streamline your business&lt;/p&gt;
+
 &lt;!--![Face](https://lh5.googleusercontent.com/-GripjIMCLVE/Ux8HdGidWII/AAAAAAAAAL4/obPzlzxwhp4/s800/working_with_openerp.png &quot;Working with OpenERP&quot;)--&gt;
+
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;Working with OpenERP&lt;/em&gt; provides a comprehensive walkthrough for installing, configuring, and implementing OpenERP in real-world business environments, understanding the value of ERP systems and &lt;strong&gt;best practice&lt;/strong&gt; approaches for getting a system up and running in your organization.&lt;/p&gt;
+  &lt;p&gt;&lt;em&gt;Working with OpenERP&lt;/em&gt; provides a comprehensive walkthrough for installing, configuring, and implementing OpenERP in real-world business environments, understanding the value of ERP systems and &lt;strong&gt;best practice&lt;/strong&gt; approaches for getting a system up and running in your organization.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;This book is for anyone that is interested in implementing an ERP system in a business organization, and IT professionals looking to get a functional understanding of OpenERP.&lt;/p&gt;
-&lt;/blockquote&gt;</description>
+  &lt;p&gt;This book is for anyone that is interested in implementing an ERP system in a business organization, and IT professionals looking to get a functional understanding of OpenERP.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
                 <link>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%280%29.-Start</link>
                 <guid>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-(0).-Start</guid>
                 <pubDate>2014-03-11T00:00:00+08:00</pubDate>
