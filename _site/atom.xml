@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-13T09:35:15+08:00</updated>
+ <updated>2014-03-13T11:50:45+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -13,11 +13,25 @@
 
  
  <entry>
-   <title>Ml (1). Classifictation</title>
-   <link href="http://www.jeffzhang.cn/machine%20learning/2014/03/13/ML-%281%29.-Classifictation"/>
+   <title>Ml (1). K— Nearest Neighbors</title>
+   <link href="http://www.jeffzhang.cn/machine%20learning/2014/03/13/ML-%281%29.-k%E2%80%94-Nearest-Neighbors"/>
    <updated>2014-03-13T00:00:00+08:00</updated>
-   <id>http://www.jeffzhang.cn/machine%20learning/2014/03/13/ML-(1).-Classifictation</id>
+   <id>http://www.jeffzhang.cn/machine%20learning/2014/03/13/ML-(1).-k—-Nearest-Neighbors</id>
    <content type="html">
+&lt;p&gt;k-近邻算法通过测量特征值之间的距离来进行分类。&lt;/p&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Ml (0). Start</title>
+   <link href="http://www.jeffzhang.cn/machine%20learning/2014/03/12/ML-%280%29.-Start"/>
+   <updated>2014-03-12T00:00:00+08:00</updated>
+   <id>http://www.jeffzhang.cn/machine%20learning/2014/03/12/ML-(0).-Start</id>
+   <content type="html">
+&lt;p&gt;近期工作需要, 计划整理一个机器学习的算法库. 过一遍&lt;em&gt;Machine Learning in Action&lt;/em&gt;, 在此记录笔记.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://lh6.googleusercontent.com/-m-HikoUUo8A/UyEps2nxZMI/AAAAAAAAANU/TXoGh_DtyoU/s800/mlinaction.png&quot; alt=&quot;Cover of Machine Learning in Action&quot; title=&quot;Cover of Machine Learning in Action&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  
