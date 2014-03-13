@@ -10,6 +10,5 @@ tags : Other
 
 测试下公式:
 
-$$(1- \theta_0) \cdot {(\frac{\sqrt{2\pi}b_{min}e^{(-\frac{1}{2\lambda^2}d_{max})}}{n_p} )^{d} } \cdot\frac{1}{m(M_G) \cdot n_p^2} \leq E\tau \leq (1-\theta_0) \cdot {(\frac{\sqrt{2\pi}b_{max}}{n_p})^{d} } \cdot\frac{1}{m(M_G) \cdot e^{(-4db_{max}^2b_{min}^{-2})}\cdot n_p^2}$$
-
+$$e^{i\pi}+1=0$$
 
