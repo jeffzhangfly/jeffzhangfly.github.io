@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-13T21:55:37+08:00</updated>
+ <updated>2014-03-13T21:58:38+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -68,10 +68,10 @@
  </entry>
  
  <entry>
-   <title>Openerp Notes (1). 序</title>
-   <link href="http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%281%29.-%E5%BA%8F"/>
+   <title>Openerp Notes (1). Intro</title>
+   <link href="http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%281%29.-Intro"/>
    <updated>2014-03-11T00:00:00+08:00</updated>
-   <id>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-(1).-序</id>
+   <id>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-(1).-Intro</id>
    <content type="html">
 &lt;h2 id=&quot;erp&quot;&gt;1. 通用ERP模块&lt;/h2&gt;
 
