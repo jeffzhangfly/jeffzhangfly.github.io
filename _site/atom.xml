@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-13T11:50:45+08:00</updated>
+ <updated>2014-03-13T17:25:55+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -18,8 +18,40 @@
    <updated>2014-03-13T00:00:00+08:00</updated>
    <id>http://www.jeffzhang.cn/machine%20learning/2014/03/13/ML-(1).-k—-Nearest-Neighbors</id>
    <content type="html">
-&lt;p&gt;k-近邻算法通过测量特征值之间的距离来进行分类。&lt;/p&gt;
+&lt;h2 id=&quot;section&quot;&gt;概述&lt;/h2&gt;
 
+&lt;p&gt;k-近邻(k-Nearest Neighbors, kNN)算法通过测量各个特征值之间的距离来进行分类。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;优点: 精度高, 对异常值不敏感, 无数据输入假定.
+缺点: 计算复杂, 空间复杂.
+使用数值范围: 数值, 标称值(nominal values, 标称类型的变量取值是有限的, 例如{真,假};{鸟类, 鱼类}等).
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;原理&lt;/h3&gt;
+&lt;p&gt;已有一个样本数据集(训练数据集), 其中每个数据都标记了它归于哪一类. 当给定一个新的没有归类信息的数据时, 从训练数据集中找出最相似的一些数据(the nearest neighbors), 根据它们的类别确定分类. 只选择前$k$个最相似的数据, 所以称为k-近邻(一般$k$不超过20). 从$k$个最相似数据中找出出现次数最多的类别, 确定新数据的分类.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;流程&lt;/h3&gt;
+
+&lt;p&gt;套用机器学习的几个步骤: 收集数据, 准备输入数据, 分析输入数据, 训练算法, 测试算法, 使用算法.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1. 收集: 任意方法;
+2. 准备: 为计算距离准备数值型的数据, 最好是结构化数据;
+3. 分析: 任意方法;
+4. 训法: kNN不需要训练;
+5. 测试: 计算错误率;
+6. 使用: ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;伪码&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;输入: 欲分类数据X
+输出: X的类别
+算法:
+1. 计算训练集中的每个数据到X的距离;
+2. 按距离升序排序训练集中数据;
+3. 选出距离最小的k个数据;
+4. 统计k个数据的分类;
+5. 返回包含数据最多的那个类别(作为X分类).
+&lt;/code&gt;&lt;/pre&gt;
 </content>
  </entry>
  
