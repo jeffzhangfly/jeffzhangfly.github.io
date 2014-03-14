@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-14T11:18:45+08:00</updated>
+ <updated>2014-03-14T11:20:25+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -24,7 +24,7 @@
 
 &lt;p&gt;&lt;img src=&quot;https://lh6.googleusercontent.com/-6AQJcHDG3Ps/UyJQG3oQ5TI/AAAAAAAAANs/IdP8KE3Yb5s/s800/decision-trees.png&quot; alt=&quot;A decision tree in flowchart form&quot; title=&quot;A decision tree in flowchart form&quot; /&gt;&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;优点: 低计算复杂度低, 结果容易理解, 缺失值不敏感, 能够处理不相关特征数据;
+&lt;pre&gt;&lt;code&gt;优点: 低计算复杂度, 结果容易理解, 缺失值不敏感, 能够处理不相关特征数据;
 缺点: 易过度适应(Prone to overfitting);
 适用: 数值, 标称值.
 &lt;/code&gt;&lt;/pre&gt;
