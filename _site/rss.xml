@@ -5,8 +5,8 @@
         <description>两招 - Jianhua Zhang</description>
         <link>http://www.jeffzhang.cn</link>
         <link>http://www.jeffzhang.cn</link>
-        <lastBuildDate>2014-03-14T11:15:16+08:00</lastBuildDate>
-        <pubDate>2014-03-14T11:15:16+08:00</pubDate>
+        <lastBuildDate>2014-03-14T11:18:45+08:00</lastBuildDate>
+        <pubDate>2014-03-14T11:18:45+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -15,7 +15,7 @@
                 <description>
 &lt;h2 id=&quot;section&quot;&gt;概述&lt;/h2&gt;
 
-&lt;p&gt;下图就是一个假想的决策树邮件分类系统.&lt;/p&gt;
+&lt;p&gt;下图是一个假想的邮件分类决策树.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://lh6.googleusercontent.com/-6AQJcHDG3Ps/UyJQG3oQ5TI/AAAAAAAAANs/IdP8KE3Yb5s/s800/decision-trees.png&quot; alt=&quot;A decision tree in flowchart form&quot; title=&quot;A decision tree in flowchart form&quot; /&gt;&lt;/p&gt;
 

@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-14T11:15:16+08:00</updated>
+ <updated>2014-03-14T11:18:45+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -20,7 +20,7 @@
    <content type="html">
 &lt;h2 id=&quot;section&quot;&gt;概述&lt;/h2&gt;
 
-&lt;p&gt;下图就是一个假想的决策树邮件分类系统.&lt;/p&gt;
+&lt;p&gt;下图是一个假想的邮件分类决策树.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://lh6.googleusercontent.com/-6AQJcHDG3Ps/UyJQG3oQ5TI/AAAAAAAAANs/IdP8KE3Yb5s/s800/decision-trees.png&quot; alt=&quot;A decision tree in flowchart form&quot; title=&quot;A decision tree in flowchart form&quot; /&gt;&lt;/p&gt;
 
