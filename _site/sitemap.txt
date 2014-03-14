@@ -8,6 +8,8 @@ http://www.jeffzhang.cn/rss.xml
 http://www.jeffzhang.cn/sitemap.txt
 http://www.jeffzhang.cn/tags.html
 
+http://www.jeffzhang.cn/machine%20learning/2014/03/14/ML-%282%29.-Decision-Trees
+http://www.jeffzhang.cn/openerp/2014/03/13/OpenERP-Notes%282%29.-Setting-Up-OpenERP
 http://www.jeffzhang.cn/machine%20learning/2014/03/13/ML-%281%29.-k%E2%80%94-Nearest-Neighbors
 http://www.jeffzhang.cn/machine%20learning/2014/03/12/ML-%280%29.-Start
 http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%281%29.-Intro

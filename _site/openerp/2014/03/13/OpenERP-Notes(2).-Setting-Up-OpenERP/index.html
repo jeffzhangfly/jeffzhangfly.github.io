@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>
       
-        Home -
+        Openerp Notes(2). Setting Up Openerp -
       
       两招
     </title>
@@ -136,34 +136,134 @@
       <div class="container">
         <div class="content">
           
-<div class="page-header-wrapper">
-	<div class="page-header">
-  		<h1>Home </h1>
-  	</div>
+<div class="page-header">
+  <h1>
+    Openerp Notes(2). Setting Up Openerp 
+    
+  </h1>
 </div>
 
 <div class="row">
-  <div class="span12">
+  <div class="span8">
     
-<ul class="posts">
-  
-    <li><span>14 Mar 2014</span> &raquo; <a href="/machine%20learning/2014/03/14/ML-%282%29.-Decision-Trees">Ml (2). Decision Trees</a></li>
-  
-    <li><span>13 Mar 2014</span> &raquo; <a href="/openerp/2014/03/13/OpenERP-Notes%282%29.-Setting-Up-OpenERP">Openerp Notes(2). Setting Up Openerp</a></li>
-  
-    <li><span>13 Mar 2014</span> &raquo; <a href="/machine%20learning/2014/03/13/ML-%281%29.-k%E2%80%94-Nearest-Neighbors">Ml (1). K— Nearest Neighbors</a></li>
-  
-    <li><span>12 Mar 2014</span> &raquo; <a href="/machine%20learning/2014/03/12/ML-%280%29.-Start">Ml (0). Start</a></li>
-  
-    <li><span>11 Mar 2014</span> &raquo; <a href="/openerp/2014/03/11/OpenERP-Notes-%281%29.-Intro">Openerp Notes (1). Intro</a></li>
-  
-    <li><span>11 Mar 2014</span> &raquo; <a href="/openerp/2014/03/11/OpenERP-Notes-%280%29.-Start">Openerp Notes (0). Start</a></li>
-  
-    <li><span>10 Mar 2014</span> &raquo; <a href="/other/2014/03/10/Blog-Reload">Blog Reload</a></li>
-  
-</ul>
+<h2 id="opererp">了解OperERP架构</h2>
+
+<h3 id="postgresql">PostgreSQL</h3>
+<p>开源, 跨平台的ORDMS(object relational database management system), 在BSD风格许可证下发行. 更多信息点击<a href="http://zh.wikipedia.org/wiki/PostgreSQL" title="中文wiki PostgreSQL词条">这里</a>查看.</p>
+
+<h3 id="writing-code-with-python">Writing code with Python</h3>
+
+<h3 id="following-the-mvc-design">Following the MVC design</h3>
+
+<h3 id="designing-models">Designing models</h3>
+
+<p>数据库结构由OpenERP模块定义, 当安装模块时, OpenERP框架根据实体模型定义自动地创建所需的表结构. 并且, OpenERP提供一个web接口, 通过它不需要修改OpenERP源代码就可以扩展数据模型.</p>
+
+<h3 id="rendering-views">Rendering views</h3>
+
+<p>OpenERP中的每个view都是使用XML定义的, OpenERP框架负责根据XML内容在浏览器上渲染页面.</p>
+
+<h3 id="authoring-controllers">Authoring controllers</h3>
+<p>架构中的控制器组件可以实现OpenERP应用的业务逻辑和工作流规则. OpenERP中的控制器组件使用Python编写, 保存为OpenERP模块中的一个对象.</p>
+
+<h2 id="section">安装</h2>
+
+<h3 id="section-1">安装包安装</h3>
+
+<p>简单, 省略.</p>
+
+<h3 id="section-2">源码安装</h3>
+
+<p>首先安装OpenERP的依赖, 例如PostgreSQL, Python及需要的Python库. 然后就可以开始源码安装.</p>
+
+<ol>
+  <li>
+    <p>安装bzr:</p>
+
+    <p>$ sudo apt-get install bzr      (Linux)</p>
+
+    <p>$ sudo brew install bzr         (Mac)</p>
+  </li>
+  <li>
+    <p>获取Installer并执行:</p>
+
+    <p>$ bzr cat -d lp:~openerp-dev/openerp-tools/trunk setup.sh | sh</p>
+  </li>
+  <li>
+    <p>安装OpenERP 7.0源码</p>
+
+    <p>$ make init-v70</p>
+  </li>
+</ol>
+
+    <hr>
+    <div class="pagination btn-group">
+      
+        <a class="btn prev" href="/machine%20learning/2014/03/13/ML-%281%29.-k%E2%80%94-Nearest-Neighbors" title="Ml (1). K— Nearest Neighbors">&larr; Previous</a>
+      
+        <a class="btn" href="/archive.html">Archive</a>
+      
+        <a class="btn next" href="/machine%20learning/2014/03/14/ML-%282%29.-Decision-Trees" title="Ml (2). Decision Trees">Next &rarr;</a>
+      
+    </div>
+    <hr>
+    
 
 
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jeffzhangfly'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <section>
+      <h4>Published</h4>
+      <div class="date"><span>13 March 2014</span></div>
+    </section>
+    
+      <section>
+        <h4>Category</h4>
+        <span class="category">
+          OpenERP
+        </span>
+      </section>
+         
+    
+      <section>
+        <h4>Tags</h4>
+        <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Python-ref">Python <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#OpenERP-ref">OpenERP <span>3</span></a></li>
+    
+  
+
+
+
+        </ul>
+      </section>
+             
   </div>
 </div>
 

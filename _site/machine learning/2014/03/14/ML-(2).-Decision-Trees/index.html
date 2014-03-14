@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>
       
-        Home -
+        Ml (2). Decision Trees -
       
       两招
     </title>
@@ -136,34 +136,138 @@
       <div class="container">
         <div class="content">
           
-<div class="page-header-wrapper">
-	<div class="page-header">
-  		<h1>Home </h1>
-  	</div>
+<div class="page-header">
+  <h1>
+    Ml (2). Decision Trees 
+    
+  </h1>
 </div>
 
 <div class="row">
-  <div class="span12">
+  <div class="span8">
     
-<ul class="posts">
-  
-    <li><span>14 Mar 2014</span> &raquo; <a href="/machine%20learning/2014/03/14/ML-%282%29.-Decision-Trees">Ml (2). Decision Trees</a></li>
-  
-    <li><span>13 Mar 2014</span> &raquo; <a href="/openerp/2014/03/13/OpenERP-Notes%282%29.-Setting-Up-OpenERP">Openerp Notes(2). Setting Up Openerp</a></li>
-  
-    <li><span>13 Mar 2014</span> &raquo; <a href="/machine%20learning/2014/03/13/ML-%281%29.-k%E2%80%94-Nearest-Neighbors">Ml (1). K— Nearest Neighbors</a></li>
-  
-    <li><span>12 Mar 2014</span> &raquo; <a href="/machine%20learning/2014/03/12/ML-%280%29.-Start">Ml (0). Start</a></li>
-  
-    <li><span>11 Mar 2014</span> &raquo; <a href="/openerp/2014/03/11/OpenERP-Notes-%281%29.-Intro">Openerp Notes (1). Intro</a></li>
-  
-    <li><span>11 Mar 2014</span> &raquo; <a href="/openerp/2014/03/11/OpenERP-Notes-%280%29.-Start">Openerp Notes (0). Start</a></li>
-  
-    <li><span>10 Mar 2014</span> &raquo; <a href="/other/2014/03/10/Blog-Reload">Blog Reload</a></li>
-  
+<h2 id="section">概述</h2>
+
+<p>下图就是一个假想的决策树邮件分类系统.</p>
+
+<p><img src="https://lh6.googleusercontent.com/-6AQJcHDG3Ps/UyJQG3oQ5TI/AAAAAAAAANs/IdP8KE3Yb5s/s800/decision-trees.png" alt="A decision tree in flowchart form" title="A decision tree in flowchart form" /></p>
+
+<pre><code>优点: 低计算复杂度低, 结果容易理解, 缺失值不敏感, 能够处理不相关特征数据;
+缺点: 易过度适应(Prone to overfitting);
+适用: 数值, 标称值.
+</code></pre>
+
+<h2 id="section-1">构造决策树</h2>
+
+<p>首先, 找到用于划分数据类别的特征项; 然后, 以此特征项分割不同类数据; 最后, 判断分割后的数据是否还能够分割, 如果可以, 再次重复这个过程.</p>
+
+<p>伪码:
+<script src="https://gist.github.com/jeffzhangfly/9540406.js"></script></p>
+
+<h3 id="section-2">流程</h3>
+
+<p>套用机器学习的几个步骤: 收集数据, 准备输入数据, 分析输入数据, 训练算法, 测试算法, 使用算法.</p>
+
+<pre><code>1. 收集: 任意方法;
+2. 准备: 连续型数据需要首先离散化;
+3. 分析: 任意方法, 构造完成后visually inspect the tree;
+4. 训法: 构造一个决策树的数据结构;
+5. 测试: 计算错误率;
+6. 使用: ...
+</code></pre>
+
+<h3 id="section-3">信息增益</h3>
+
+<p>划分数据集要以将数据变得更有序/有组织(more organized)为标准. 使用信息论,检测数据分割前后的信息变化, 分割前后信息发生的变化即信息增益, 以信息增益最高为标准, 可以确定采用哪个特征来分隔数据最好.</p>
+
+<h3 id="entropy">熵(entropy)</h3>
+
+<p>熵的概念最早起源于物理学，用于度量一个热力学系统的无序程度。在信息论里面，熵是对不确定性的测量。</p>
+
+<p>如果某个事物可能的分类有多个, 那么事物属于某个类别$x_i$的信息定义为</p>
+
+<script type="math/tex; mode=display">l(x_i)=-\log_2p(x_i)</script>
+
+<p>$p(x_i)$是事物属于这个类别的概率.</p>
+
+<p>熵定义为信息的期望值, 即所有位置的所有信息的期望值.</p>
+
+<script type="math/tex; mode=display">H=-\sum_{i=1}^np(x_i)\log_2p(x_i)</script>
+
+<h3 id="section-4">算法</h3>
+
+<ul>
+  <li><a href="http://zh.wikipedia.org/zh/ID3算法" title="ID3">ID3</a></li>
+  <li><a href="http://zh.wikipedia.org/wiki/C4.5算法" title="C4.5">C4.5</a></li>
 </ul>
 
 
+    <hr>
+    <div class="pagination btn-group">
+      
+        <a class="btn prev" href="/openerp/2014/03/13/OpenERP-Notes%282%29.-Setting-Up-OpenERP" title="Openerp Notes(2). Setting Up Openerp">&larr; Previous</a>
+      
+        <a class="btn" href="/archive.html">Archive</a>
+      
+        <a class="btn next disabled">Next &rarr;</a>
+      
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jeffzhangfly'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <section>
+      <h4>Published</h4>
+      <div class="date"><span>14 March 2014</span></div>
+    </section>
+    
+      <section>
+        <h4>Category</h4>
+        <span class="category">
+          Machine Learning
+        </span>
+      </section>
+         
+    
+      <section>
+        <h4>Tags</h4>
+        <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Classification-ref">Classification <span>2</span></a></li>
+    
+  
+
+
+
+        </ul>
+      </section>
+             
   </div>
 </div>
 
