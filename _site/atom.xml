@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-14T11:20:25+08:00</updated>
+ <updated>2014-03-16T16:24:36+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -28,6 +28,16 @@
 缺点: 易过度适应(Prone to overfitting);
 适用: 数值, 标称值.
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;适用于:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;数据实例由”属性-值”对构成;&lt;/li&gt;
+  &lt;li&gt;目标函数具有离散的输出值;&lt;/li&gt;
+  &lt;li&gt;可能需要析取的描述(disjunctive description), 因为决策树自然地代表了析取表达式;&lt;/li&gt;
+  &lt;li&gt;训练数据可能包含错误, 决策树对错误具有良好的健壮性;&lt;/li&gt;
+  &lt;li&gt;训练数据可以包含缺少属性值的实例, 例如某些样本缺少重量的属性数据.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h2 id=&quot;section-1&quot;&gt;构造决策树&lt;/h2&gt;
 
@@ -73,6 +83,18 @@
   &lt;li&gt;&lt;a href=&quot;http://zh.wikipedia.org/wiki/C4.5算法&quot; title=&quot;C4.5&quot;&gt;C4.5&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id=&quot;section-5&quot;&gt;过度拟合&lt;/h3&gt;
+
+&lt;p&gt;定义: 给定一个假设空间$H$, 一个假设$h\in H$, 如果存在其他的假设$h^{\prime}\in H$, 使得在训练样例上$h$的错误率比$h^{\prime}$小, 但在整体实例分布上$h^{\prime}$的错误率比$h$小, 那么就说假设$h$过度拟合(overfit)训练数据.&lt;/p&gt;
+
+&lt;p&gt;解决过度拟合的思路分两类:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在完美分类训练数据之前就停止树的增长;&lt;/li&gt;
+  &lt;li&gt;后修剪法(post-proune), 即允许树过度拟合, 然后再对这个树进行修剪.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最普遍的一种方法: 训练和验证集(training and validation set)法. 可用的数据被分为训练集合和验证集合两个样例集合, 前者用来形成学习到的假设, 后者用来对假设并进行评估和修剪.&lt;/p&gt;
 </content>
  </entry>
  
