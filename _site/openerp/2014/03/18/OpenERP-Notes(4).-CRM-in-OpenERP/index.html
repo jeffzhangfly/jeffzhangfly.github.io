@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      
+        Openerp Notes(4). Crm In Openerp -
+      
+      两招
+    </title>
+    
+    <meta name="author" content="Jianhua Zhang">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/hooligan/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/hooligan/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/themes/hooligan/css-social-buttons/css/zocial.stripped.css">
+    <link href="/assets/themes/hooligan/css/pygments.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/hooligan/css/darkstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/hooligan/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+  </head>
+
+  <body>
+    <div id="page-wrap">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="/">两招</a>
+
+            <div class="nav-collapse">
+              <ul class="nav">
+                
+                
+                
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+              </ul>
+              <ul class="nav pull-right social visible-desktop">
+                <li class="divider-vertical"></li>
+                
+                <li>
+                  <a href="https://github.com/jeffzhangfly" class="zocial github icon" target="_blank">
+                    <span class="hidden-desktop">Github</span>
+                  </a>
+                </li>
+                
+                
+                
+                <li>
+                  <a href="https://twitter.com/jeffzhangfly" class="zocial twitter icon" target="_blank">
+                    <span class="hidden-desktop">Twitter</span>
+                  </a>
+                </li>
+                
+                
+                
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="content">
+          
+<div class="page-header">
+  <h1>
+    Openerp Notes(4). Crm In Openerp 
+    
+  </h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    
+<h2 id="section">概述</h2>
+
+<ul>
+  <li>管理客户体验, 提高客户忠诚度.</li>
+  <li>把客户当成人看, 而不是一些数据, 客户会以他们的忠诚作为回报.</li>
+  <li>根据具体公司的核心目标和任务来构建CRM系统, 一个好的CRM系统不应当仅仅是管理销售过程, 而应该管理包括售前售后的完整用户体验.</li>
+</ul>
+
+<h2 id="crm">安装CRM应用</h2>
+
+<h2 id="sales-representativeaccount-manager">分配销售代表(sales representative)或客户经理(account manager)</h2>
+
+<p>类似于其他的CRM系统, 销售代表和客户经理在OE的CRM中也是非常重要的角色. 首先创建一个用户作为销售人员, 在OE中, 销售代表也是一个OE的系统用户.</p>
+
+<p>首先设置=&gt;用户=&gt;创建, 创建一个虚构的销售人员, 李销售(login:saleslee).</p>
+
+<h3 id="section-1">销售用户的设定</h3>
+<p>注意访问权限页面, 将李销售设置销售权限为”经理(Manager)”, 人力资源为”雇员(Employee)”
+每个应用权限可选以下三种:</p>
+
+<ul>
+  <li>看自己的线索(User: Own Leads Only)</li>
+</ul>
+
+<p>最具限制性的权限, 具有此权限的用户只能看到他自己的或被赋予他们的线索, 不能看到赋予其他销售人员的线索.</p>
+
+<ul>
+  <li>所有线索(User: All Leads)</li>
+</ul>
+
+<p>可以看到系统中的所有线索.</p>
+
+<ul>
+  <li>经理(Manager)</li>
+</ul>
+
+<p>经理具有最高级别的访问权限, 具有经理权限的用户可以看到所有线索并且可以访问应用的配置, 这个级别的权限还允许用户访问统计报表.</p>
+
+<h3 id="section-2">用户登录密码</h3>
+
+<p>默认情况下, 创建系统用户不需要设定用户密码. 因为默认方法将发送给用户一封Email, 通过该Email中提供的信息用户可以自己设定自己的密码. 如果没有配置Email服务器, 可以在<em>保存用户后</em>, 点击页面顶端的”更多”菜单, 从下拉选项中选择”Change Password”修改登录密码.</p>
+
+<h3 id="section-3">为销售人员分配客户</h3>
+
+<p>“销售”=&gt;选择”张三”, “编辑”=&gt;”销售与采购”页面=&gt;”销售员”设置为李销售, “销售团队”设置为销售部.</p>
+
+<h2 id="leadsopportunities">线索(leads)与商机(opportunities)</h2>
+
+<h3 id="section-4">跟踪线索和商机</h3>
+
+<p>与商机相比, 线索被转化为真正的销售的可能性要小. 典型的线索例子是在某个会议期间收到很多名片, 这些名片都可以添加到你的线索中供以后跟踪利用. 典型的商机例子是与某人约见并详细地谈了一些关于为他们提供某种服务的事项.</p>
+
+<h3 id="section-5">新建一个商机</h3>
+
+<p>在OE中, 新建一个商机就是定义一个新的潜在销售, 使用商机来收集一次销售相关的信息, 例如销售的范围和可能的结果等.</p>
+
+<p>选择”销售”=&gt;”商机列表”=&gt;”创建”, 打开创建商机界面.</p>
+
+<p><strong>1 主题(Subject)</strong></p>
+
+<p>这是创建商机时仅有的必填项.</p>
+
+<p><strong>2 预期收益(Expected revenue and percentage)</strong></p>
+
+<p><strong>3 客户</strong></p>
+
+<p>如果是从客户窗口创建机会, 那么这个字段会自动填写, 否则, 选一个吧.</p>
+
+<p><strong>4 下一动作</strong></p>
+
+<p>对于这个商机, 下一个重要的动作是什么(文本提示)以及何时进行.</p>
+
+<p><strong>5 预期结束和优先级(Expected Closing and Priority)</strong></p>
+
+<p>为关闭销售设定一个目标, 以及这个商机的优先级.</p>
+
+<p><strong>6 分类(Categories)</strong></p>
+
+<p>OE允许设定多个分类.</p>
+
+<p><strong>7 线索页</strong></p>
+
+<p>选择了客户后, 线索页自动填写了部分数据, 剩余的联系人信息须填写. 联系人部分的”职务(Function)”字段可以在出发事件时提供更具体一些的信息.</p>
+
+<p>“参考来自(Referred By)”是一个简单的文本字段, 这里的数据作为一个说明, 指出谁可能参考这个商机.</p>
+
+<h3 id="kanban">在kanban视图查看商机</h3>
+
+<p>“销售”=&gt;”商机列表”, 可以看到kanban视图中新建的商机. 鼠标移动到标签上, 点击右上角的下来图标, 可以进行一些操作.</p>
+
+<p>可以通过拖动商机标签到不同的列, 表示对应的销售处于不同的阶段.</p>
+
+<h3 id="oeopenchatter">OE的OpenChatter功能</h3>
+
+<p>作为OE7中最大的功能增强, OpenChatter功能提供了类似社会网络形式的业务文档交流处理.</p>
+
+<p>OpenChatter功能几乎可以处理OE中的所有业务文档.</p>
+
+<p>点击顶部的状态, 将这个商机的状态改变为”建议(Proposition)”, 在窗口的下方日志部分, 可以看到这个操作的记录.</p>
+
+<h3 id="section-6">管理商机</h3>
+
+<p>这个建议完成后, 可以记录一些信息为以后检视这个商机提供帮助. 这些信息可以记录在商机的”内部备注(Internal Notes)”中, 也可以使用OpenChatter功能来记录.</p>
+
+<p>使用OpenChatter记录这些信息为备注能够为产生一个自动添加时间戳副本. 另外, OpenChatter还可以自动向团队成员的收件箱发送消息.</p>
+
+<p>点击商机下方的”记录一个笔记(Log a note)”将一个备注附加到这个商机上. 这样添加备注后不会给其他人发送消息. 使用”附加一个文件(Attach a File)”功能还可以为备注添加附件文档. 点击保存后, 这个备注将被保存并且变为文档的OpenChatter日志.</p>
+
+<h3 id="following-a-business-document">跟踪业务文档(Following a business document)</h3>
+
+<p>OE将社会网络的概念代入到业务交流中. 如果一个用户跟踪(Following)了一个文档, 当它更新时, 将会自动获得该文档的更新, 在OE收件箱中收到通知. 商机编辑界面右下方可以设置何时受到通知.可以通过”加入其他的”增加其他用户Following.</p>
+
+<h3 id="section-7">准备电话联系</h3>
+
+<p>商机到了建议阶段, 可以准备电话联系了. 在查看商机窗口中点击”计划/电话访问的记录”打开窗体. 如果已经打过电话, 现在仅仅想记录它, 选择”记录通话日志(Log a Call)”即可. 假设我们需要”安排通话(Schedule a Call)”, 选定安排通话后, 能够设定计划日期(Planned Date), 其他大部分信息就已经填写好了. 点击”计划的电话访问(Schedule Call)”按钮后, 这次电话访问被记录在了日历中, 并且会有一个日志项显示在这个商机文档中.</p>
+
+<h3 id="section-8">查看通话安排</h3>
+
+<p>选择”销售”=&gt;”准备电话联系(Scheduled Calls)”可以看到通话安排的列表. 点击行上绿色的箭头标记相应的通话为”保留(held)”. 点击这条记录打开一个窗口.</p>
+
+<h2 id="section-9">销售谈判</h2>
+
+<p>打开商机并且编辑记录, 预期收益为3750.00和80%, 并设置为谈判阶段.</p>
+
+<h3 id="section-10">修改销售阶段</h3>
+
+<p>销售阶段, 也就是商机列表的列是可以自定义的, 以满足不同的需求. 在kanban视图, 点击左上角的”添加新列(Add a new column)”连接, 打开的窗体中需要填写阶段名称(Stage Name), 相关状态, 概率和类型字段. 相关状态字段当到达这个阶段时, 应该赋以哪个预定义的状态.</p>
+
+<p>这里有个bug? 新建了stage, 但是在商机阶段中看不到新建的stage, 也就是无法改变到新建的stage, 只能在商机列表的kanban视图, 拖动商机到新建的stage, 再打开商机, 就正常了.</p>
+
+<p><strong>OE中的status和stage</strong>: status的范围要大, stage更精细.</p>
+
+<h2 id="section-11">关闭销售</h2>
+
+<p>经过努力地工作, 终于赢得了这个商机, 现在可以将这个商机转变为报价(Quotation)了.</p>
+
+<p>点击商机窗体顶部的”转为报价单(Make Quotation)”按钮, 弹出转为报价单窗体. 选定”已赢得”并点击创建, 商机直接变成了一个报价单. 在”销售”=&gt;”报价单”中可以看到这个报价单.</p>
+
+<h2 id="section-12">新建线索</h2>
+
+<p>OE中, 创建商机和客户之前可以先创建线索. 例如, 收到一个名片或从网站收到一条线索.</p>
+
+<p>创建线索并没有创建一个客户, 但是在线索创建窗体, 可以通过为”客户”字段填写值来将这个线索变为一个客户.</p>
+
+<h2 id="section-13">为不同的产品自定义销售团队</h2>
+
+<p>在产品很多的公司, 可能需要为不同的产品线创建不同的销售团队. 不同销售阶段的目的就是为了给用户最积极的用户体验.</p>
+
+<p>点击”销售”=&gt;”销售团队”, 在创建销售团队时, 可以定义不同的阶段.</p>
+
+
+    <hr>
+    <div class="pagination btn-group">
+      
+        <a class="btn prev" href="/openerp/2014/03/16/OpenERP-Notes%283%29.-Starting-Your-First-Company" title="Openerp Notes(3). Starting Your First Company">&larr; Previous</a>
+      
+        <a class="btn" href="/archive.html">Archive</a>
+      
+        <a class="btn next disabled">Next &rarr;</a>
+      
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jeffzhangfly'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <section>
+      <h4>Published</h4>
+      <div class="date"><span>18 March 2014</span></div>
+    </section>
+    
+      <section>
+        <h4>Category</h4>
+        <span class="category">
+          OpenERP
+        </span>
+      </section>
+         
+    
+      <section>
+        <h4>Tags</h4>
+        <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Python-ref">Python <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#OpenERP-ref">OpenERP <span>5</span></a></li>
+    
+  
+
+
+
+        </ul>
+      </section>
+             
+  </div>
+</div>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+
+        </div>
+      </div> <!-- /container -->
+
+      <div class="footer-push"></div>
+    </div><!--/.page-wrap -->
+
+    <footer>
+      <div class="container">
+      </p>
+      </p>
+      <p>&copy; 2014<a href http://www.jeffzhang.cn> Jianhua Zhang</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/hooligan/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/hooligan/bootstrap/js/bootstrap.min.js"></script>
+
+    
+  </body>
+</html>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
