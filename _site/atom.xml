@@ -4,13 +4,262 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-16T16:24:36+08:00</updated>
+ <updated>2014-03-18T11:27:13+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Openerp Notes(3). Starting Your First Company</title>
+   <link href="http://www.jeffzhang.cn/openerp/2014/03/16/OpenERP-Notes%283%29.-Starting-Your-First-Company"/>
+   <updated>2014-03-16T00:00:00+08:00</updated>
+   <id>http://www.jeffzhang.cn/openerp/2014/03/16/OpenERP-Notes(3).-Starting-Your-First-Company</id>
+   <content type="html">
+&lt;h2 id=&quot;section&quot;&gt;概述&lt;/h2&gt;
+&lt;p&gt;首先查看业务需求, 决定需要哪些模块, 并创建一个OpenERP数据库并配置需要的公司信息.
+然后看看如何创建, 查看信息, 完成一个SO流程.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;模块化的实现&lt;/h3&gt;
+&lt;p&gt;初次安装完成OpenERP后, 仅有一个基本的消息系统, OpenERP的更多功能模块, 可以在随后的对需求更明确的情况下逐步地安装到系统中.&lt;/p&gt;
+
+&lt;p&gt;不要一开始就把所有模块都安装上, 应该把部署过程分为一个个小的阶段.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;背景介绍&lt;/h3&gt;
+
+&lt;p&gt;Silkworm公司是一个开展屏幕打印, 刺绣(embroidery)和图形设计业务的公司. 将以此公司为例, 首先实现SO(Sales Order)模块, 将产品(T恤)的销售纳入管理中.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;创建数据库&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://lh5.googleusercontent.com/-znSvr6T_6J4/UyWUxi1Zs5I/AAAAAAAAAOc/k6uwDyRtC3g/s800/OE_create_db.png&quot; alt=&quot;创建数据库&quot; title=&quot;创建数据库&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;sales-management&quot;&gt;安装销售管理(Sales Management)模块&lt;/h2&gt;
+&lt;p&gt;在模块列表中找到销售管理模块, 安装之.
+&lt;img src=&quot;https://lh6.googleusercontent.com/-DFXuwiFC57U/UyWUxjYuNqI/AAAAAAAAAOc/0ZsMWcDYsUE/s800/OE_modules_list.png&quot; alt=&quot;模块列表&quot; title=&quot;模块列表&quot; /&gt;
+经过一会的等待, 销售管理安装完成.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;配置会计数据&lt;/h2&gt;
+&lt;p&gt;销售管理模块安装后, 显示如下的配置会计数据提示.
+&lt;img src=&quot;https://lh4.googleusercontent.com/-PxujzUQ9m1A/UyWWlAaes3I/AAAAAAAAAO0/a0_ibeEqEew/s800/OE_config_accounting.png&quot; alt=&quot;配置会计数据&quot; title=&quot;配置会计数据&quot; /&gt;
+选择中国会计科目表, 点击继续, 一会后弹出会计选项配置. 还可以选择”小企业会计科目表”.
+&lt;img src=&quot;https://lh3.googleusercontent.com/-8mkKo0ZnUIU/UyWYLbkQ0PI/AAAAAAAAAPM/_RHDs4deLFk/s800/OE_accounting_option.png&quot; alt=&quot;会计选项&quot; title=&quot;会计选项&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;创建第一位客户&lt;/h2&gt;
+
+&lt;p&gt;销售模块安装完成后, 自动打开创建客户功能, 并提示你开始创建第一位客户.
+&lt;img src=&quot;https://lh4.googleusercontent.com/-NGkAr0fcWY0/UyWdKZr9dyI/AAAAAAAAAP0/yehuD-56qtc/s800/OE_create_customer.png&quot; alt=&quot;创建客户&quot; title=&quot;创建客户&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;“是一个公司?”&lt;/h3&gt;
+&lt;p&gt;如果选择了”是一个公司”, 下方将会在显示额外的信息填写选项.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-7&quot;&gt;编辑客户信息–销售与采购页&lt;/h3&gt;
+
+&lt;p&gt;客户信息页面的地步分为几个tabs和pages, 这里填写更多的信息. 在销售与采购页, 可以填写这些信息, 例如销售员和各种Email.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://lh6.googleusercontent.com/-SRJuTpGjrDg/UyWgE4eJNJI/AAAAAAAAAQM/-XW6IdOXg5I/s800/OE_create_customer_salesNpurchases.png&quot; alt=&quot;销售与采购&quot; title=&quot;销售与采购&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1 销售员(Salesperson)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;通过设定销售员可以为这位客户制定一个销售员. 这个字段不是必须的, 如果使用CRM模块的话, 这个字段一般会用到.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2 编号(Reference)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;编号字段用于处理已有信息系统中的客户编号, 如果没有历史遗留客户数据问题, 这个字段可以用于其他目的, 或者直接留空.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3 语言(Language)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4 日期(Date)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;系统使用这里填写的日期作为得到这个用户的日期, 也可以将这个字段留空.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5 客户(Customer)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;OpenERP使用一种唯一的方法保存人员相关的数据, 所有个体数据保存在同样的表中(res_partner), 无论他们是客户还是供应商. 张三是一个客户, 所以勾选客户checkbox.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6 供应商(Supplier)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;一个个体可以即是客户又是供应商.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7 有效(Active)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;如果想不显示一个客户, 但是又不想从DB中删除他, 那么可以用这个”有效”字段来控制.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;OpenERP的很多类型的数据中, 都有这个&quot;有效&quot;字段, 可以方便地无效某条数据但不从DB中删除它.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;8 通过Email接收消息(Receive Messages by Email)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;设定与客户交流的水平, 以及什么情况下客户收到电子邮件通知.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;9 Opt-Out&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Opt-Out标志允许你阻止任何自动的或市场活动相关的电子邮件发送到客户email地址.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;编辑客户信息–会计页&lt;/h3&gt;
+
+&lt;p&gt;因为添加新客户时必须提供一些潜在的基本信息, 所以需要填写会计页页面的信息. 只有”应收科目”和”应付帐”是必填的.
+&lt;img src=&quot;https://lh4.googleusercontent.com/-OOW3nfv2PU4/UyZm517St3I/AAAAAAAAAQo/et5sPGlg3Mc/s800/OE_SO_customer_accounting.png&quot; alt=&quot;会计页&quot; title=&quot;会计页&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1 财务结构(Fiscal Position)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;税务状态. OpenERP中有两种: 正常(Normal Taxes)和免税(Tax Exempt). 这个字段不是必须的, 并且在生成sales order时可以重载此项.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2 应收科目(Account Receivable)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;为这个客户指定默认收账帐号类型. 此字段必填.  &lt;font color=&quot;yellow&quot;&gt;TODO:了解相关的财务知识.&lt;/font&gt;&lt;/p&gt;
+
+&lt;p&gt;This field is required, and the account will be automatically debited when a customer is invoiced. When the invoice is paid, then the accounts receivable account will be credited.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3 客户付款条款(Customer Payment Term)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;一般不同的客户有不同的付款条款(期限). 默认提供: 马上, 15天, 30天.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4 应收款合计(Total Receivable)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;新客户是0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5 信用额度(Credit Limit)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;允许对客户建立信用机制, 例如对于新客户, 要求立刻付款, 所以这里的信用额度也是0.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6 Latest Full Reconciliation Date&lt;/strong&gt;
+ &lt;font color=&quot;yellow&quot;&gt;TODO:&lt;/font&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7 应付款(Account Payable)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;如果该客户是一个供货商, 那么使用这里.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;8 供应商付款条款(Supplier Payment Term)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;用于供货商客户.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;9 应付款合计(Total Payable)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;用于供货商客户.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;10 银行账号(Bank Accounts)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;屏幕底部, 可以为客户增加银行账号, 点击”添加一个帐号”, 弹出添加银行账号界面进行添加.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-9&quot;&gt;创建一个产品&lt;/h2&gt;
+
+&lt;h3 id=&quot;product-name&quot;&gt;产品名称(Product Name)&lt;/h3&gt;
+
+&lt;p&gt;Medium White T-Shirt&lt;/p&gt;
+
+&lt;h3 id=&quot;category&quot;&gt;种类(Category)&lt;/h3&gt;
+
+&lt;p&gt;默认会添加到”所有产品”(All products). 可以自定义产品分类.&lt;/p&gt;
+
+&lt;h3 id=&quot;can-be-sole-checkbox&quot;&gt;可销售(Can be Sole) checkbox&lt;/h3&gt;
+
+&lt;p&gt;类似”有效”(Active).&lt;/p&gt;
+
+&lt;h3 id=&quot;section-10&quot;&gt;创建一个产品–信息页&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1 产品类型&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;分为”消耗品”和”服务”. 服务类型的产品不会再购买订单中创建采购项, 消耗品类型是真实可卖的, 并且将会产生销售订单.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2 销售价格&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;16.50&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3 编号(Internal Reference)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;选填, 可以用于企业内部对产品进行编号的机制.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4 EAN13 条码&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;procurements-page&quot;&gt;创建一个产品–Procurements page&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1 成本(Cost)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;没有安装购买模块, 也可以为产品指定一个成本. 这个数值将用于财务中的标准股票期权, 并且如果安装了购买模块(purchaseing module), 这个价格作为一个购买订单的基本价格.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2 供应商说明(Description for Suppliers)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这个字段允许为一个产品指定其作为供应商的描述文本. 在一些工业领域, 提供这样的产品信息是必不可少的.&lt;/p&gt;
+
+&lt;h3 id=&quot;inventory&quot;&gt;创建一个产品–盘点页面(Inventory)&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1 状态(Status)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;开发中
+常规
+生命周期结束
+作废
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;2 产品经理&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;可以为每种产品指定一个产品经理, 这样做便于产生报表和更加智能的仪表盘. 例如, 一个工程师可以配置他的仪表盘仅显示他作为产品经理的产品.&lt;/p&gt;
+
+&lt;h3 id=&quot;sales&quot;&gt;创建一个产品–销售页面(Sales)&lt;/h3&gt;
+
+&lt;p&gt;这里可以设置质保时间以及报价单上的文本说明.&lt;/p&gt;
+
+&lt;h3 id=&quot;accounting&quot;&gt;创建一个产品–会计页面(Accounting)&lt;/h3&gt;
+
+&lt;p&gt;这里设置税率(客户税和进项税).&lt;/p&gt;
+
+&lt;h2 id=&quot;section-11&quot;&gt;设置公司信息&lt;/h2&gt;
+
+&lt;p&gt;选择”设置”=&amp;gt;”公司”, 选择”Your Company”进行编辑. 比较简单, 不再记录.&lt;/p&gt;
+
+&lt;h2 id=&quot;sales-order&quot;&gt;输入第一个销售订单(sales order)&lt;/h2&gt;
+
+&lt;p&gt;点击”销售”=&amp;gt;”销售订单”, 点击创建新建一个新的销售订单.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1 选择客户&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;选择刚才创建了的张三.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2 日期&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3 客户关联单号(Customer Reference)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;这个值用于与销售相关联, 例如可能希望保存一个该用户怎么获得的引用.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;输入销售订单的行项&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;点击下方的”增加一个项目(Add a item)”, 将会插入一个新的行, 在这里填写刚才输入的产品以及数量等信息.&lt;/p&gt;
+
+&lt;p&gt;点击保存后, 将显示客户地址, 并且金额的小计(Subtotal), 合计(Total)将计算并显示.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-12&quot;&gt;理解销售订单工作流程&lt;/h3&gt;
+
+&lt;p&gt;销售订单输入后, 它的状态处于”报价单草稿(Draft Quotation)”状态, 报价单的状态显示在报价单的右上方(OpenERP7). “报价单草稿”=&amp;gt;”报价单发送(Quotation Sent)”=&amp;gt;”已完成(Done)”.&lt;/p&gt;
+
+&lt;p&gt;从这个流程可以看出来, 报价单需要发送才能确认完成. 报价单页面左上方显示当前可以进行的操作.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;以邮件发送(Send by Email)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;以设定的Email地址发送报价单copy.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;打印&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;生成一个PDF格式的文档.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;确认订单(Confirm Sale)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;订单确认后, 报价单将转变为一个销售订单, 并进入到后续的销售流程中.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;取消报价(Cancel Quotation)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;取消订单终止报价工作流, 但不会被删除该报价单, 这些数据用于归档,&lt;/p&gt;
+
+&lt;h3 id=&quot;invoicing-the-sale&quot;&gt;开具销售发票(Invoicing the sale)&lt;/h3&gt;
+
+&lt;p&gt;不同的业务类型在确认销售订单后会有不同的工作流程. 在本例中, 下一步是开具发票. 确认订单后, 点击”生成发票(Create Invoic)”按钮, 将显示一个”开票订单(Invoice Order)”窗口, 选择开票类型, 然后生成发票即可.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;生成发票(Creating the invoice)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;初始生成的发票处于”草稿(Draft)”状态, 点击”查看发票”=&amp;gt;”使其有效(Validate)”确认发票并进入到下一个流程.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Ml (2). Decision Trees</title>
