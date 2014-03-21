@@ -17,5 +17,4 @@ http://www.jeffzhang.cn/machine%20learning/2014/03/13/ML-%281%29.-k%E2%80%94-Nea
 http://www.jeffzhang.cn/machine%20learning/2014/03/12/ML-%280%29.-Start
 http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%281%29.-Intro
 http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%280%29.-Start
-http://www.jeffzhang.cn/other/2014/03/10/Blog-Reload
 http://www.jeffzhang.cn/mcda/2012/05/06/yaahp

@@ -5,8 +5,8 @@
         <description>两招 - Jianhua Zhang</description>
         <link>http://www.jeffzhang.cn</link>
         <link>http://www.jeffzhang.cn</link>
-        <lastBuildDate>2014-03-21T11:55:01+08:00</lastBuildDate>
-        <pubDate>2014-03-21T11:55:01+08:00</pubDate>
+        <lastBuildDate>2014-03-21T11:59:21+08:00</lastBuildDate>
+        <pubDate>2014-03-21T11:59:21+08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -703,21 +703,6 @@ system to organize and report business transactions. In many ERP systems, the ac
                 <link>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-%280%29.-Start</link>
                 <guid>http://www.jeffzhang.cn/openerp/2014/03/11/OpenERP-Notes-(0).-Start</guid>
                 <pubDate>2014-03-11T00:00:00+08:00</pubDate>
-        </item>
-
-        <item>
-                <title>Blog Reload</title>
-                <description>
-&lt;p&gt;由于一些特殊的功能要求，把Blog从Wordpress换成Jekyll了。懒得迁移数据了，以前的文章也没什么意思，重新开始吧。&lt;/p&gt;
-
-&lt;p&gt;测试下公式:&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;e^{i\pi}+1=0&lt;/script&gt;
-
-</description>
-                <link>http://www.jeffzhang.cn/other/2014/03/10/Blog-Reload</link>
-                <guid>http://www.jeffzhang.cn/other/2014/03/10/Blog-Reload</guid>
-                <pubDate>2014-03-10T00:00:00+08:00</pubDate>
         </item>
 
         <item>
