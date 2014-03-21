@@ -4,13 +4,25 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-03-18T16:45:19+08:00</updated>
+ <updated>2014-03-21T11:55:01+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Openerp Notes(5). Purchasing With Openerp</title>
+   <link href="http://www.jeffzhang.cn/openerp/2014/03/21/OpenERP-Notes%285%29.-Purchasing-with-OpenERP"/>
+   <updated>2014-03-21T00:00:00+08:00</updated>
+   <id>http://www.jeffzhang.cn/openerp/2014/03/21/OpenERP-Notes(5).-Purchasing-with-OpenERP</id>
+   <content type="html">
+&lt;p&gt;购买订单(PO)&lt;/p&gt;
+
+&lt;p&gt;在CRM中增加供应商及其商品, 然后开始一个购买过程&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Openerp Notes(4). Crm In Openerp</title>
@@ -707,6 +719,22 @@ system to organize and report business transactions. In many ERP systems, the ac
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;e^{i\pi}+1=0&lt;/script&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Yaahp</title>
+   <link href="http://www.jeffzhang.cn/mcda/2012/05/06/yaahp"/>
+   <updated>2012-05-06T00:00:00+08:00</updated>
+   <id>http://www.jeffzhang.cn/mcda/2012/05/06/yaahp</id>
+   <content type="html">
+&lt;p&gt;&lt;em&gt;yaahp&lt;/em&gt; is a decision analysis software based on analytic hierarchical process (AHP).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://lh3.googleusercontent.com/-jbDvxKt4C0I/Uyuyb6vQsPI/AAAAAAAAAR4/Nt6r9byJjV8/s800/main.png&quot; alt=&quot;Model modify&quot; title=&quot;Model modify&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://lh4.googleusercontent.com/-8UfCRL8ZsgY/Uyuyb41R3lI/AAAAAAAAARw/loIbQ0oGZ_8/s800/main_matrix_input.png&quot; alt=&quot;Matrix&quot; title=&quot;Matrix&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://lh5.googleusercontent.com/-d7Mk6PwUSZU/Uyuyb12GVCI/AAAAAAAAARo/SGFdUzkX6yk/s800/sensitive.png&quot; alt=&quot;Sensitive&quot; title=&quot;Sensitive&quot; /&gt;&lt;/p&gt;
 </content>
  </entry>
  
