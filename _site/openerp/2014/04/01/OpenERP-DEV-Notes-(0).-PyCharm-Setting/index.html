@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>
       
-        Home -
+        Openerp Dev Notes (0). Pycharm Setting -
       
       两招
     </title>
@@ -136,42 +136,116 @@
       <div class="container">
         <div class="content">
           
-<div class="page-header-wrapper">
-	<div class="page-header">
-  		<h1>Home </h1>
-  	</div>
+<div class="page-header">
+  <h1>
+    Openerp Dev Notes (0). Pycharm Setting 
+    
+  </h1>
 </div>
 
 <div class="row">
-  <div class="span12">
+  <div class="span8">
     
-<ul class="posts">
-  
-    <li><span>01 Apr 2014</span> &raquo; <a href="/openerp/2014/04/01/OpenERP-DEV-Notes-%280%29.-PyCharm-Setting">Openerp Dev Notes (0). Pycharm Setting</a></li>
-  
-    <li><span>21 Mar 2014</span> &raquo; <a href="/openerp/2014/03/21/OpenERP-Notes%285%29.-Purchasing-with-OpenERP">Openerp Notes(5). Purchasing With Openerp</a></li>
-  
-    <li><span>18 Mar 2014</span> &raquo; <a href="/openerp/2014/03/18/OpenERP-Notes%284%29.-CRM-in-OpenERP">Openerp Notes(4). Crm In Openerp</a></li>
-  
-    <li><span>16 Mar 2014</span> &raquo; <a href="/openerp/2014/03/16/OpenERP-Notes%283%29.-Starting-Your-First-Company">Openerp Notes(3). Starting Your First Company</a></li>
-  
-    <li><span>14 Mar 2014</span> &raquo; <a href="/machine%20learning/2014/03/14/ML-%282%29.-Decision-Trees">Ml (2). Decision Trees</a></li>
-  
-    <li><span>13 Mar 2014</span> &raquo; <a href="/openerp/2014/03/13/OpenERP-Notes%282%29.-Setting-Up-OpenERP">Openerp Notes(2). Setting Up Openerp</a></li>
-  
-    <li><span>13 Mar 2014</span> &raquo; <a href="/machine%20learning/2014/03/13/ML-%281%29.-k%E2%80%94-Nearest-Neighbors">Ml (1). K— Nearest Neighbors</a></li>
-  
-    <li><span>12 Mar 2014</span> &raquo; <a href="/machine%20learning/2014/03/12/ML-%280%29.-Start">Ml (0). Start</a></li>
-  
-    <li><span>11 Mar 2014</span> &raquo; <a href="/openerp/2014/03/11/OpenERP-Notes-%281%29.-Intro">Openerp Notes (1). Intro</a></li>
-  
-    <li><span>11 Mar 2014</span> &raquo; <a href="/openerp/2014/03/11/OpenERP-Notes-%280%29.-Start">Openerp Notes (0). Start</a></li>
-  
-    <li><span>06 May 2012</span> &raquo; <a href="/mcda/2012/05/06/yaahp">Yaahp</a></li>
-  
-</ul>
+<h3 id="openerp">导入OpenERP</h3>
+<p>创建一个空的工程作为开发OE模块使用的工程, 然后菜单”File”=&gt;”Open Directory…“选择解压后的OpenERP目录, 目录结构如下图所示.</p>
+
+<p><img src="https://lh5.googleusercontent.com/-SuINzxaUs20/Uzon9hnAMwI/AAAAAAAAASE/2ygcEVRN5mg/s800/oe_tree.png" alt="OE Tree" title="OE Tree" /></p>
+
+<p>在PyCharm中展开工程, 将install子目录下的”openerp-server.conf”拷贝到新加入的openerp根目录下, 并打开进行相应的修改.</p>
+
+<h3 id="section">启动运行</h3>
+<p>在工程目录树根上找到”openerp-server”, 右键选择”Run ‘openerp-server’“启动服务器, 如果弹出错误, 可能是PostgreSQL没有启动或依赖的Python模块没有安装.</p>
+
+<h3 id="python">调试Python</h3>
+<p>在工程目录树根上找到”openerp-server”, 右键选择”Debug ‘openerp-server’“以调试模式启动服务器. 如果设置了断点, 就会在运行到断点处停下来.
+注意Run和Debug前一定要确定只有一个OE服务器实例启动.</p>
+
+<h3 id="javascript">调试JavaScript</h3>
+<p>PyCharm里选择”Edit Configurations…”.</p>
+
+<p><img src="https://lh3.googleusercontent.com/-3st6TTwlwrs/UzowxGPghnI/AAAAAAAAATI/-WI5KCYOs6Y/s800/oe_debug_js_1.png" alt="Debug JavaScript 1" /></p>
+
+<p>然后在打开的窗口中选择”+”增加一个JavaScript的Debug设置.</p>
+
+<p><img src="https://lh3.googleusercontent.com/-V9UEgj2xfeE/UzowxBmEH_I/AAAAAAAAATI/YfsVMWMudyg/s800/oe_debug_js_2.png" alt="Debug JavaScript 2" /></p>
+
+<p>然后按下图中设定.</p>
+
+<p><img src="https://lh4.googleusercontent.com/-J8tF6m38H3A/UzowxEvpZNI/AAAAAAAAATI/qCB8pmaXH9Y/s800/oe_debug_js_3.png" alt="Debug JavaScript 3" /></p>
+
+<p>设定好这些后, 启动openerp-server(Run或Debug均可), 然后选择js debug启动debug.  提示安装Chrome的JetBrains IDE Support支持插件, 安装之. 安装后的Chrome打开OE后如下图所示.</p>
+
+<p><img src="https://lh3.googleusercontent.com/-hgR7chEljWs/UzowzMYMBGI/AAAAAAAAATI/xxQxga7dypY/s800/oe_debug_js_4.png" alt="Debug JavaScript 4" /></p>
 
 
+    <hr>
+    <div class="pagination btn-group">
+      
+        <a class="btn prev" href="/openerp/2014/03/21/OpenERP-Notes%285%29.-Purchasing-with-OpenERP" title="Openerp Notes(5). Purchasing With Openerp">&larr; Previous</a>
+      
+        <a class="btn" href="/archive.html">Archive</a>
+      
+        <a class="btn next disabled">Next &rarr;</a>
+      
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jeffzhangfly'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <section>
+      <h4>Published</h4>
+      <div class="date"><span>01 April 2014</span></div>
+    </section>
+    
+      <section>
+        <h4>Category</h4>
+        <span class="category">
+          OpenERP
+        </span>
+      </section>
+         
+    
+      <section>
+        <h4>Tags</h4>
+        <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Python-ref">Python <span>7</span></a></li>
+     
+    	<li><a href="/tags.html#OpenERP-ref">OpenERP <span>7</span></a></li>
+    
+  
+
+
+
+        </ul>
+      </section>
+             
   </div>
 </div>
 

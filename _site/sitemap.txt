@@ -8,6 +8,7 @@ http://www.jeffzhang.cn/rss.xml
 http://www.jeffzhang.cn/sitemap.txt
 http://www.jeffzhang.cn/tags.html
 
+http://www.jeffzhang.cn/openerp/2014/04/01/OpenERP-DEV-Notes-%280%29.-PyCharm-Setting
 http://www.jeffzhang.cn/openerp/2014/03/21/OpenERP-Notes%285%29.-Purchasing-with-OpenERP
 http://www.jeffzhang.cn/openerp/2014/03/18/OpenERP-Notes%284%29.-CRM-in-OpenERP
 http://www.jeffzhang.cn/openerp/2014/03/16/OpenERP-Notes%283%29.-Starting-Your-First-Company
