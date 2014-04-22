@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-04-22T12:47:35+08:00</updated>
+ <updated>2014-04-22T13:20:22+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -60,10 +60,10 @@ import openacademy
  </entry>
  
  <entry>
-   <title>Openerp Dev Notes (2). Modules</title>
-   <link href="http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-%282%29.-Modules"/>
+   <title>Openerp Dev Notes (2). Modules Structure</title>
+   <link href="http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-%282%29.-Modules-structure"/>
    <updated>2014-04-03T00:00:00+08:00</updated>
-   <id>http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-(2).-Modules</id>
+   <id>http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-(2).-Modules-structure</id>
    <content type="html">
 &lt;h2 id=&quot;modules&quot;&gt;1.3 Modules&lt;/h2&gt;
 
