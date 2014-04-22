@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-04-22T12:27:29+08:00</updated>
+ <updated>2014-04-22T12:47:35+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Openerp Dev Notes (x). Tutorial</title>
-   <link href="http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-%28x%29.-Tutorial"/>
-   <updated>2014-04-03T00:00:00+08:00</updated>
-   <id>http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-(x).-Tutorial</id>
+   <link href="http://www.jeffzhang.cn/openerp/2014/04/22/OpenERP-DEV-Notes-%28x%29.-Tutorial"/>
+   <updated>2014-04-22T00:00:00+08:00</updated>
+   <id>http://www.jeffzhang.cn/openerp/2014/04/22/OpenERP-DEV-Notes-(x).-Tutorial</id>
    <content type="html">
 &lt;h2 id=&quot;section&quot;&gt;1. 创建项目&lt;/h2&gt;
 
@@ -90,14 +90,14 @@ import openacademy
   &lt;li&gt;选择性地创建报表和工作流定义文件;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;initpy&quot;&gt;&lt;strong&gt;init&lt;/strong&gt;.py&lt;/h4&gt;
+&lt;h4 id=&quot;initpy&quot;&gt;__init__.py&lt;/h4&gt;
 
-&lt;p&gt;Python的import文件, OpenERP模块也是一个标准的Python模块, 这个文件导入该模块所有其他的python文件和子模块. 例如, 如果一个模块仅包含一个名为openacademy.py的文件, &lt;strong&gt;init&lt;/strong&gt;.py文件的内容应该是:&lt;/p&gt;
+&lt;p&gt;Python的import文件, OpenERP模块也是一个标准的Python模块, 这个文件导入该模块所有其他的python文件和子模块. 例如, 如果一个模块仅包含一个名为openacademy.py的文件, __init__.py文件的内容应该是:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;import openacademy
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&quot;openerppy&quot;&gt;&lt;strong&gt;openerp&lt;/strong&gt;.py&lt;/h4&gt;
+&lt;h4 id=&quot;openerppy&quot;&gt;__openerp__.py&lt;/h4&gt;
 
 &lt;p&gt;每个模块目录下必须有这个文件, 这个文件中, 用python的字典确定:&lt;/p&gt;
 

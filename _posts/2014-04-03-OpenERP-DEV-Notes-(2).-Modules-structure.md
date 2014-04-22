@@ -30,13 +30,13 @@ tags : [Python, OpenERP]
 * 创建xml文件定义模块数据, 例如视图, 菜单项或demo数据;
 * 选择性地创建报表和工作流定义文件;
 
-####__init__.py
+####\_\_init\_\_.py
 
-Python的import文件, OpenERP模块也是一个标准的Python模块, 这个文件导入该模块所有其他的python文件和子模块. 例如, 如果一个模块仅包含一个名为openacademy.py的文件, __init__.py文件的内容应该是:
+Python的import文件, OpenERP模块也是一个标准的Python模块, 这个文件导入该模块所有其他的python文件和子模块. 例如, 如果一个模块仅包含一个名为openacademy.py的文件, \_\_init\_\_.py文件的内容应该是:
 
     import openacademy
 
-####__openerp__.py
+####\_\_openerp\_\_.py
 
 每个模块目录下必须有这个文件, 这个文件中, 用python的字典确定:
 
@@ -72,7 +72,7 @@ Python的import文件, OpenERP模块也是一个标准的Python模块, 这个文
 
 >***auto_install***:     True or False (default: False). If set to ‘‘True‘‘, the module is a link module. It will be installed as soon as all its dependencies are installed.
 
-例如, **openacademy**模块的__openerp__.py中的字典如下:
+例如, **openacademy**模块的\_\_openerp\_\_.py中的字典如下:
 
     {
         "name" : "OpenAcademy",
