@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-04-22T13:20:22+08:00</updated>
+ <updated>2014-04-22T15:11:52+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -90,14 +90,14 @@ import openacademy
   &lt;li&gt;选择性地创建报表和工作流定义文件;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&quot;initpy&quot;&gt;__init__.py&lt;/h4&gt;
+&lt;h3 id=&quot;initpy&quot;&gt;__init__.py&lt;/h3&gt;
 
 &lt;p&gt;Python的import文件, OpenERP模块也是一个标准的Python模块, 这个文件导入该模块所有其他的python文件和子模块. 例如, 如果一个模块仅包含一个名为openacademy.py的文件, __init__.py文件的内容应该是:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;import openacademy
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&quot;openerppy&quot;&gt;__openerp__.py&lt;/h4&gt;
+&lt;h3 id=&quot;openerppy&quot;&gt;__openerp__.py&lt;/h3&gt;
 
 &lt;p&gt;每个模块目录下必须有这个文件, 这个文件中, 用python的字典确定:&lt;/p&gt;
 
@@ -182,7 +182,7 @@ import openacademy
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&quot;objects&quot;&gt;对象(Objects)&lt;/h4&gt;
+&lt;h3 id=&quot;objects&quot;&gt;对象(Objects)&lt;/h3&gt;
 
 &lt;p&gt;OpenERP中, 所有的资源都是对象(Objects), 例如: 发票, partners等. 元数据也是对象: 菜单(menus), 动作(actions), 报表(reports)……对象命名是分层的, 例如:&lt;/p&gt;
 
@@ -196,7 +196,7 @@ import openacademy
 
 &lt;p&gt;可以直接使用SQL语句来操作PostgreSQL数据库, 但是这样做事危险的, 可能会导致数据不一致等等错误.&lt;/p&gt;
 
-&lt;h4 id=&quot;xml&quot;&gt;XML文件&lt;/h4&gt;
+&lt;h3 id=&quot;xml&quot;&gt;XML文件&lt;/h3&gt;
 
 &lt;p&gt;模块目录下的xml文件用于模块安装/更新时初始化/更新数据库, 例如:&lt;/p&gt;
 
@@ -207,9 +207,186 @@ import openacademy
   &lt;li&gt;定义工作流;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;关于xml文件结构的更多细节见&lt;strong&gt;&lt;em&gt;TODO:换成文章链接&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;关于xml文件结构的更多细节见&lt;strong&gt;&lt;em&gt;xml-serialization section TODO:换成文章链接&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;h4 id=&quot;record-tag&quot;&gt;Record Tag&lt;/h4&gt;
+&lt;p&gt;OpenERP对象可以通过使用该对象相应的XML文件插入到相应的PostgreSQL表中, 一个OpenERP XML文件的一般结构如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot;?&amp;gt;
+&amp;lt;openerp&amp;gt;
+    &amp;lt;data&amp;gt;
+        &amp;lt;record model=&quot;model.name_1&quot; id=&quot;id_name_1&quot;&amp;gt;
+            &amp;lt;field name=&quot;field1&quot;&amp;gt; &quot;field1 content&quot; &amp;lt;/field&amp;gt;
+            &amp;lt;field name=&quot;field2&quot;&amp;gt; &quot;field2 content&quot; &amp;lt;/field&amp;gt;
+            (...)
+        &amp;lt;/record&amp;gt;
+        &amp;lt;record model=&quot;model.name_2&quot; id=&quot;id_name_2&quot;&amp;gt;
+            (...)
+        &amp;lt;/record&amp;gt;
+        (...)
+    &amp;lt;/data&amp;gt;
+&amp;lt;/openerp&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;record-tag&quot;&gt;Record Tag&lt;/h3&gt;
+
+&lt;p&gt;Record标记描述新数据, 它有一个必需的属性model, 它的值应该是一个将执行插入数据的对象名; record标记还可以有一个可选的id属性, 如果这个属性赋值了, 那么这个id值可以在这个文件的后面作为这个资源的引用标示符(ID)来使用.&lt;/p&gt;
+
+&lt;p&gt;一个record标记可以包含多个field标记, 指出这些字段的值, 如果没有给出字段值则使用默认值.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-record-field-tag&quot;&gt;The Record Field tag&lt;/h3&gt;
+
+&lt;p&gt;field标记的属性如下:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;name: 必需的, 字段名&lt;/li&gt;
+  &lt;li&gt;eval: 可选的, 一个python表达式, 通过它计算值&lt;/li&gt;
+  &lt;li&gt;ref: 对本文件中出现过的id的引用&lt;/li&gt;
+  &lt;li&gt;model: 搜索时使用的模型&lt;/li&gt;
+  &lt;li&gt;search: 一个查询&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;示例&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;record model=&quot;ir.actions.report.xml&quot; id=&quot;l0&quot;&amp;gt;
+    &amp;lt;field name=&quot;model&quot;&amp;gt;account.invoice&amp;lt;/field&amp;gt;
+    &amp;lt;field name=&quot;name&quot;&amp;gt;Invoices List&amp;lt;/field&amp;gt;
+    &amp;lt;field name=&quot;report_name&quot;&amp;gt;account.invoice.list&amp;lt;/field&amp;gt;
+    &amp;lt;field name=&quot;report_xsl&quot;&amp;gt;account/report/invoice.xsl&amp;lt;/field&amp;gt;
+    &amp;lt;field name=&quot;report_xml&quot;&amp;gt;account/report/invoice.xml&amp;lt;/field&amp;gt;
+&amp;lt;/record&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;下面是一个OpenERP源码中的示例(base模块中的base_demo.xml)&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;record model=&quot;res.company&quot; id=&quot;main_company&quot;&amp;gt;
+    &amp;lt;field name=&quot;name&quot;&amp;gt;Tiny sprl&amp;lt;/field&amp;gt;
+    &amp;lt;field name=&quot;partner_id&quot; ref=&quot;main_partner&quot;/&amp;gt;
+    &amp;lt;field name=&quot;currency_id&quot; ref=&quot;EUR&quot;/&amp;gt;
+&amp;lt;/record&amp;gt;
+&amp;lt;record model=&quot;res.users&quot; id=&quot;user_admin&quot;&amp;gt;
+    &amp;lt;field name=&quot;login&quot;&amp;gt;admin&amp;lt;/field&amp;gt;
+    &amp;lt;field name=&quot;password&quot;&amp;gt;admin&amp;lt;/field&amp;gt;
+    &amp;lt;field name=&quot;name&quot;&amp;gt;Administrator&amp;lt;/field&amp;gt;
+    &amp;lt;field name=&quot;signature&quot;&amp;gt;Administrator&amp;lt;/field&amp;gt;
+    &amp;lt;field name=&quot;action_id&quot; ref=&quot;action_menu_admin&quot;/&amp;gt;
+    &amp;lt;field name=&quot;menu_id&quot; ref=&quot;action_menu_admin&quot;/&amp;gt;
+    &amp;lt;field name=&quot;address_id&quot; ref=&quot;main_address&quot;/&amp;gt;
+    &amp;lt;field name=&quot;groups_id&quot; eval=&quot;[(6,0,[group_admin])]&quot;/&amp;gt;
+    &amp;lt;field name=&quot;company_id&quot; ref=&quot;main_company&quot;/&amp;gt;
+&amp;lt;/record&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;后一条记录定义了admin用户:&lt;/p&gt;
+
+&lt;p&gt;1 login, password等字段简单地直接给出值&lt;/p&gt;
+
+&lt;p&gt;2 ref属性允许在记录间建立联系:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;field name=&quot;company_id&quot; ref=&quot;main_company&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;company_id&lt;/strong&gt;字段是一个从user对象到公司对象的many-to-one关系, &lt;strong&gt;main_company&lt;/strong&gt;是关联的ID.&lt;/p&gt;
+
+&lt;p&gt;3 eval属性允许在xml中放置一些python代码:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;field name=&quot;groups_id&quot; eval=&quot;[(6,0,[group_admin])]&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这里的groups_id字段是一个many2many字段, “[(6,0,[group_admin])]”表示: 移除所有当前user的groups关联并使用一个[group_admin]列表作为新的groups关联, 这里group_admin也是另一个record的id.&lt;/p&gt;
+
+&lt;p&gt;4 search属性可以在不知道xml中id的情况下, 通过搜索发现关联的记录. 可以给出一个特定的查询条件来查找记录. 查询条件是一个查询条件元组的列表.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;field name=&quot;partner_id&quot; search=&quot;[]&quot; model=&quot;res.partner&quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以上xml代码是一个demo数据中的典型例子: 因为不关心到底使用哪个partner, 所以搜索条件列表为空, 注意此时&lt;strong&gt;model&lt;/strong&gt;属性是必需的.&lt;/p&gt;
+
+&lt;h3 id=&quot;function-tag&quot;&gt;Function tag&lt;/h3&gt;
+
+&lt;p&gt;函数表几种可以包含其他函数标记, 属性如下:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;model: 必需, 涉及的model&lt;/li&gt;
+  &lt;li&gt;name: 必填, 函数名&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;eval: 计算表达式
+&lt;strong&gt;示例&lt;/strong&gt;:&lt;/p&gt;
+
+    &lt;function model=&quot;ir.ui.menu&quot; name=&quot;search&quot; eval=&quot;[[(’name’,’=’,’Operations’)]]&quot; /&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;views&quot;&gt;Views&lt;/h3&gt;
+
+&lt;p&gt;Views是一种在客户端展现对象的方式, Views指出如何在屏幕上摆放从对象获得的数据. Views有两类:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;form views&lt;/li&gt;
+  &lt;li&gt;tree views&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Lists是一种简单的tree views的特例.&lt;/p&gt;
+
+&lt;p&gt;一个对象可能有多种views, 第一个定义的一类view(tree, form等)将作为这类的默认view. 这样就可以有一个默认的tree view(作为one2many的view)和一个特定用于显示多些或少些信息的view, 后者在双击菜单项是显示. 例如, 根据不同产品, products有多个views.&lt;/p&gt;
+
+&lt;p&gt;views用XML描述.&lt;/p&gt;
+
+&lt;p&gt;如果某个对象没有定义view, 那么这个对象可以产生一个默认的基本view来显示自己, 这样可以减小工作量.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;使用示例&lt;/h3&gt;
+
+&lt;p&gt;打开一个发票时的操作链:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;一个action请求打开the invoice, 给定了相应的对象数据(account.invoice), 视图以及domain(例如仅显示为支付的invoices)&lt;/li&gt;
+  &lt;li&gt;客户端询问(通过XML-RPC)服务器这个invoice对象定义了哪些views, 以及哪些数据必须显示&lt;/li&gt;
+  &lt;li&gt;客户端显示相应的view&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;to-develop-new-objects&quot;&gt;To develop new objects&lt;/h3&gt;
+
+&lt;p&gt;设计新的对象的最小工作: 创建对象, 可选地创建相应的views. PostgreSQL表不需要手动操作, 因为对象可以自动创建它们(或调整已存在的表).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reports&lt;/strong&gt;: OpenERP使用一个强力且灵活的报表系统, 可以生成PDF或HTML格式的报表. 更多报表信息参见&lt;strong&gt;TODO:修改这里为 报表章节链接&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Workflow&lt;/strong&gt;: 使用对象和views可以方便地定义新的forms, lists/trees, 及它们之间的交互, 但是还需要能够定义这些对象动态特性.&lt;/p&gt;
+
+&lt;p&gt;例如:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;为了确认一个销售订单, 必须产生相对应的发票&lt;/li&gt;
+  &lt;li&gt;特定情况下, 支付发票后应该启动发货&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;工作流用图的形式描述这些交互, 对象可能关联到一个或多个工作流, 但工作流不是必需的, 有些对象没有相关的工作流.&lt;/p&gt;
+
+&lt;p&gt;下面是sale orders相关的工作流例子:&lt;/p&gt;
+
+&lt;p&gt;在图中, 节点表示要进行的actions, 例如:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;创建一个发票&lt;/li&gt;
+  &lt;li&gt;取消销售单&lt;/li&gt;
+  &lt;li&gt;生成发运单&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;箭头表示条件, 例如:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;等待订单验证&lt;/li&gt;
+  &lt;li&gt;支付发票&lt;/li&gt;
+  &lt;li&gt;点击取消按钮&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;方块节点表示其他工作流, 例如:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;发票&lt;/li&gt;
+  &lt;li&gt;发运&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;i18n&lt;/strong&gt;: 每个模块都有自己的i18n文件夹. 另外, OpenERP还可以用.po文件来导入/导出. 已安装的翻译文件在安装或升级模块时自动加载.&lt;/p&gt;
+
 </content>
  </entry>
  
