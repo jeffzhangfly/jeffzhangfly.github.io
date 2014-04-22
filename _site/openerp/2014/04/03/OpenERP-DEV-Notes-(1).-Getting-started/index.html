@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>
       
-        Openerp Notes(2). Setting Up Openerp -
+        Openerp Dev Notes (1). Getting Started -
       
       两招
     </title>
@@ -138,7 +138,7 @@
           
 <div class="page-header">
   <h1>
-    Openerp Notes(2). Setting Up Openerp 
+    Openerp Dev Notes (1). Getting Started 
     
   </h1>
 </div>
@@ -146,64 +146,92 @@
 <div class="row">
   <div class="span8">
     
-<h2 id="opererp">了解OperERP架构</h2>
+<h2 id="section">1.1 起步</h2>
 
-<h3 id="postgresql">PostgreSQL</h3>
-<p>开源, 跨平台的ORDMS(object relational database management system), 在BSD风格许可证下发行. 更多信息点击<a href="http://zh.wikipedia.org/wiki/PostgreSQL" title="中文wiki PostgreSQL词条">这里</a>查看.</p>
+<h3 id="section-1">1.1.1 从源码安装</h3>
 
-<h3 id="writing-code-with-python">Writing code with Python</h3>
+<p>安装各种依赖包, 然后bzr安装, 具体见<em>OpenERP Technical Memento</em>.</p>
 
-<h3 id="following-the-mvc-design">Following the MVC design</h3>
+<h3 id="section-2">1.1.2 命令行参数</h3>
 
-<h3 id="designing-models">Designing models</h3>
+<p>./openerp-server –help</p>
 
-<p>数据库结构由OpenERP模块定义, 当安装模块时, OpenERP框架根据实体模型定义自动地创建所需的表结构. 并且, OpenERP提供一个web接口, 通过它不需要修改OpenERP源代码就可以扩展数据模型.</p>
+<h3 id="configuration">1.1.3 Configuration</h3>
 
-<h3 id="rendering-views">Rendering views</h3>
+<p>两个配置文件: <em>~/.openerprc</em>; <em>~/.openerp_serverrc</em>. 如果没有发现, 说明服务器和客户端用默认配置启动. 服务端配置文件可以使用<em>./openerp-server -s</em>或<em>./openerp-server –save</em>创建.</p>
 
-<p>OpenERP中的每个view都是使用XML定义的, OpenERP框架负责根据XML内容在浏览器上渲染页面.</p>
+<p>还可以通过命令行参数指定配置文件: <em>-c CONFIG</em>; <em>-config=CONFIG</em>.</p>
 
-<h3 id="authoring-controllers">Authoring controllers</h3>
-<p>架构中的控制器组件可以实现OpenERP应用的业务逻辑和工作流规则. OpenERP中的控制器组件使用Python编写, 保存为OpenERP模块中的一个对象.</p>
+<h4 id="addons">配置addons位置</h4>
 
-<h2 id="section">安装</h2>
+<p>addons默认在<em>server/bin/addons</em>, 源码安装的在<em>openerp/addons</em>.</p>
 
-<h3 id="section-1">安装包安装</h3>
+<ul>
+  <li>在addons目录创建连接;</li>
+  <li>启动server时用命令行参数设定: <em>–addons-path=ADDONS_PATH</em>.</li>
+</ul>
 
-<p>简单, 省略.</p>
+<h3 id="start-up">1.1.4 Start-up脚本</h3>
 
-<h3 id="section-2">源码安装</h3>
+<h2 id="section-3">1.2 架构</h2>
 
-<p>首先安装OpenERP的依赖, 例如PostgreSQL, Python及需要的Python库. 然后就可以开始源码安装.</p>
+<h3 id="openerp">1.2.1 多端三层架构的OpenERP</h3>
 
-<ol>
-  <li>
-    <p>安装bzr:</p>
+<ul>
+  <li>数据库层用于数据存储</li>
+  <li>应用层处理各种功能性工作</li>
+  <li>表示层提供用户接口</li>
+</ul>
 
-    <p>$ sudo apt-get install bzr      (Linux)</p>
+<p>OpenERP系统由三部分组成:</p>
 
-    <p>$ sudo brew install bzr         (Mac)</p>
-  </li>
-  <li>
-    <p>获取Installer并执行:</p>
+<ul>
+  <li>包含所有OpenERP数据库的PostgreSQL数据库服务器. 数据库中保存了所有的应用数据, 以及很多OpenERP系统配置数据. 可以部署为集群数据库;</li>
+  <li>OpenERP服务器, 包括所有的企业逻辑并确保OpenERP runs optimally. OEM引擎用于与PostgreSQL数据库交互, Web层用于服务器与web浏览器之间交互. 可以部署多服务器, 例如使用负载平衡的多服务器互联;</li>
+  <li>client是一个javascript应用, 运行在web浏览器中.</li>
+</ul>
 
-    <p>$ bzr cat -d lp:~openerp-dev/openerp-tools/trunk setup.sh | sh</p>
-  </li>
-  <li>
-    <p>安装OpenERP 7.0源码</p>
+<p><strong>Server - ORM</strong></p>
 
-    <p>$ make init-v70</p>
-  </li>
-</ol>
+<p>ORM层是OpenERP的一个非常突出的特性. 在PostgreSQL之上提供了必须及额外的功能. 数据模型使用Python描述, OpenERP使用ORM来创建下层的数据库表. RDBMS的特性, 例如唯一性约束, 有效的查询等, 都可以通过Python灵活地完成, 例如Python编写的约束可以添加到任意的模型上.</p>
+
+<p>利用ORM可以获得:</p>
+
+<ul>
+  <li>强力的有效性检查从而保证了一致性;</li>
+  <li>对象级别的接口, 从而能够更有效地设计和实现模块;</li>
+  <li>各个用户和组的低级别上的安全保证;</li>
+  <li>资源组的复杂动作;</li>
+  <li>提供继承服务从而使新的资源能够更好地建模.</li>
+</ul>
+
+<p><strong>Server - Web</strong></p>
+
+<p>现在Web层是一个基于<em>werkzeug</em>的WSGI兼容应用.</p>
+
+<p><strong>Modules</strong></p>
+
+<p>OpenERP服务器是核心, 对于企业来说, OpenERP的价值在于它的各个功能模块. 模块用来实现各种商务需求.</p>
+
+<h3 id="mvc">1.2.2 MVC架构</h3>
+
+<p>略…</p>
+
+<h3 id="wsgi">1.2.3 网络通信及WSGI</h3>
+
+<p>OpenERP是一个HTTP的web服务, 也可以部署为一个WSGI兼容应用.</p>
+
+<p>WSGI是Python生态系统中用于编写HTTP服务, 应用及中间件的解决方案标准.</p>
+
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/machine%20learning/2014/03/13/ML-%281%29.-k%E2%80%94-Nearest-Neighbors" title="Ml (1). K— Nearest Neighbors">&larr; Previous</a>
+        <a class="btn prev" href="/openerp/2014/04/01/OpenERP-DEV-Notes-%280%29.-PyCharm-Setting" title="Openerp Dev Notes (0). Pycharm Setting">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/machine%20learning/2014/03/14/ML-%282%29.-Decision-Trees" title="Ml (2). Decision Trees">Next &rarr;</a>
+        <a class="btn next" href="/openerp/2014/04/03/OpenERP-DEV-Notes-%282%29.-Modules" title="Openerp Dev Notes (2). Modules">Next &rarr;</a>
       
     </div>
     <hr>
@@ -233,7 +261,7 @@
   <div class="span4">
     <section>
       <h4>Published</h4>
-      <div class="date"><span>13 March 2014</span></div>
+      <div class="date"><span>03 April 2014</span></div>
     </section>
     
       <section>

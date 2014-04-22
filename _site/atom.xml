@@ -4,13 +4,300 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-04-03T08:58:59+08:00</updated>
+ <updated>2014-04-22T12:27:29+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>Openerp Dev Notes (x). Tutorial</title>
+   <link href="http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-%28x%29.-Tutorial"/>
+   <updated>2014-04-03T00:00:00+08:00</updated>
+   <id>http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-(x).-Tutorial</id>
+   <content type="html">
+&lt;h2 id=&quot;section&quot;&gt;1. 创建项目&lt;/h2&gt;
+
+&lt;p&gt;1.1 PyCharm中新建一个名为&lt;em&gt;openacademy&lt;/em&gt;的项目;&lt;/p&gt;
+
+&lt;p&gt;1.2 添加__init__.py文件, 文件内容:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# -*- coding: utf-8 -*-
+import openacademy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1.3 添加__openerp__.py文件, 文件内容:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# -*- coding: utf-8 -*-
+
+{
+    &quot;name&quot; : &quot;OpenAcademy&quot;,
+    &quot;version&quot; : &quot;1.0&quot;,
+    &quot;author&quot; : &quot;OpenERP SA&quot;,
+    &quot;category&quot; : &quot;Tools&quot;,
+    &quot;depends&quot; : [&quot;mail&quot;],
+    &quot;data&quot; : [
+        &quot;openacademy_view.xml&quot;,
+        &quot;openacademy_data.xml&quot;,
+        &quot;report/module_report.xml&quot;,
+        &quot;wizard/module_wizard.xml&quot;,
+    ],
+    &quot;demo&quot; : [
+            &quot;openacademy_demo.xml&quot;
+    ],
+        &quot;installable&quot;: True,
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;1.4 添加OpenERP源码&lt;/p&gt;
+
+&lt;p&gt;“File”=&amp;gt;”Open Directory…“选择OpenERP源码目录, 拷贝openerp-serer.conf到根目录并配置, 在openerp根目录下的openerp-server上右键并选择”Run ‘openerp-server’“启动服务器(注意之前先启动PostgreSQL服务), 访问http://localhost:8069/, 确认成功.&lt;/p&gt;
+
+&lt;p&gt;1.5&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Openerp Dev Notes (2). Modules</title>
+   <link href="http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-%282%29.-Modules"/>
+   <updated>2014-04-03T00:00:00+08:00</updated>
+   <id>http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-(2).-Modules</id>
+   <content type="html">
+&lt;h2 id=&quot;modules&quot;&gt;1.3 Modules&lt;/h2&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;1.3.1 模块结构&lt;/h3&gt;
+
+&lt;p&gt;一个模块包含以下要素:&lt;/p&gt;
+
+&lt;p&gt;业务对象: 定义为派生自osv.Model的Python类, 这些资源的持久化由OpenERP的ORM管理.&lt;/p&gt;
+
+&lt;p&gt;数据: 保存元数据(视图和工作流定义), 配置数据(模块参数)和demo数据(可选但推荐测试用)的XML/CSV文件.&lt;/p&gt;
+
+&lt;p&gt;报表: RML(XML 格式)文件. HTML/MAKO或OpenOffice报表模板, 可以与任意类型的业务数据合并, 并产生HTML, ODT或PDF报表.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://lh4.googleusercontent.com/-TUpcoLCQCiw/Uz0bz5OzNiI/AAAAAAAAATg/cei0vdpreug/s800/OE_module_composition.png&quot; alt=&quot;OE Module composition&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;例如, 创建一个’OpenAcademy’模块示例, 需要下列步骤:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在source/addons目录下创建一个&lt;em&gt;openacademy&lt;/em&gt;子目录;&lt;/li&gt;
+  &lt;li&gt;创建一个模块import文件__init__.py文件;&lt;/li&gt;
+  &lt;li&gt;创建一个模块清单(manifest)文件__openerp__.py;&lt;/li&gt;
+  &lt;li&gt;创建包含对象的Python文件s;&lt;/li&gt;
+  &lt;li&gt;创建xml文件定义模块数据, 例如视图, 菜单项或demo数据;&lt;/li&gt;
+  &lt;li&gt;选择性地创建报表和工作流定义文件;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;initpy&quot;&gt;&lt;strong&gt;init&lt;/strong&gt;.py&lt;/h4&gt;
+
+&lt;p&gt;Python的import文件, OpenERP模块也是一个标准的Python模块, 这个文件导入该模块所有其他的python文件和子模块. 例如, 如果一个模块仅包含一个名为openacademy.py的文件, &lt;strong&gt;init&lt;/strong&gt;.py文件的内容应该是:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;import openacademy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;openerppy&quot;&gt;&lt;strong&gt;openerp&lt;/strong&gt;.py&lt;/h4&gt;
+
+&lt;p&gt;每个模块目录下必须有这个文件, 这个文件中, 用python的字典确定:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;服务器初始化时需要解析的XML文件;&lt;/li&gt;
+  &lt;li&gt;该模块的依赖项;&lt;/li&gt;
+  &lt;li&gt;定义额外的元数据.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这个文件包含的字典中需要有这些key:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;name&lt;/em&gt;&lt;/strong&gt;:             The name of the module in English.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;version&lt;/em&gt;&lt;/strong&gt;:          The version of the module.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;summary&lt;/em&gt;&lt;/strong&gt;:          Short description or keywords&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;description&lt;/em&gt;&lt;/strong&gt;:      The module description (text).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;category&lt;/em&gt;&lt;/strong&gt;:         The categrory of the module&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;author&lt;/em&gt;&lt;/strong&gt;:           The author of the module.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;website&lt;/em&gt;&lt;/strong&gt;:          URL of the website of the module.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;license&lt;/em&gt;&lt;/strong&gt;:          The license of the module (default: AGPL-3).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;depends&lt;/em&gt;&lt;/strong&gt;:          List of modules on which this module depends beside base.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;data&lt;/em&gt;&lt;/strong&gt;:             List of .xml files to load when the module is installed or updated.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;demo&lt;/em&gt;&lt;/strong&gt;:             List of additional .xml files to load when the module is installed or updated and demo flag is active.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;installable&lt;/em&gt;&lt;/strong&gt;:      True or False. Determines whether the module is installable or not.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;&lt;em&gt;auto_install&lt;/em&gt;&lt;/strong&gt;:     True or False (default: False). If set to ‘‘True‘‘, the module is a link module. It will be installed as soon as all its dependencies are installed.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;例如, &lt;strong&gt;openacademy&lt;/strong&gt;模块的__openerp__.py中的字典如下:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    &quot;name&quot; : &quot;OpenAcademy&quot;,
+    &quot;version&quot; : &quot;1.0&quot;,
+    &quot;author&quot; : &quot;OpenERP SA&quot;,
+    &quot;category&quot; : &quot;Tools&quot;,
+    &quot;depends&quot; : [&quot;mail&quot;],
+    &quot;data&quot; : [
+        &quot;openacademy_view.xml&quot;,
+        &quot;openacademy_data.xml&quot;,
+        &quot;report/module_report.xml&quot;,
+        &quot;wizard/module_wizard.xml&quot;,
+    ],
+    &quot;demo&quot; : [
+            &quot;openacademy_demo.xml&quot;
+    ],
+        &quot;installable&quot;: True,
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;objects&quot;&gt;对象(Objects)&lt;/h4&gt;
+
+&lt;p&gt;OpenERP中, 所有的资源都是对象(Objects), 例如: 发票, partners等. 元数据也是对象: 菜单(menus), 动作(actions), 报表(reports)……对象命名是分层的, 例如:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;account.transfer: a money transfer&lt;/li&gt;
+  &lt;li&gt;account.invoice: 一个发票&lt;/li&gt;
+  &lt;li&gt;account.invoice.line: 一个发票行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;一般情况下, 第一个单词是模块名(account, stock, sale), 这些对象定义为osv.Model的派生类.&lt;/p&gt;
+
+&lt;p&gt;可以直接使用SQL语句来操作PostgreSQL数据库, 但是这样做事危险的, 可能会导致数据不一致等等错误.&lt;/p&gt;
+
+&lt;h4 id=&quot;xml&quot;&gt;XML文件&lt;/h4&gt;
+
+&lt;p&gt;模块目录下的xml文件用于模块安装/更新时初始化/更新数据库, 例如:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;定义初始和示例数据;&lt;/li&gt;
+  &lt;li&gt;定义视图;&lt;/li&gt;
+  &lt;li&gt;定义报表;&lt;/li&gt;
+  &lt;li&gt;定义工作流;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;关于xml文件结构的更多细节见&lt;strong&gt;&lt;em&gt;TODO:换成文章链接&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;record-tag&quot;&gt;Record Tag&lt;/h4&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Openerp Dev Notes (1). Getting Started</title>
+   <link href="http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-%281%29.-Getting-started"/>
+   <updated>2014-04-03T00:00:00+08:00</updated>
+   <id>http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-(1).-Getting-started</id>
+   <content type="html">
+&lt;h2 id=&quot;section&quot;&gt;1.1 起步&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;1.1.1 从源码安装&lt;/h3&gt;
+
+&lt;p&gt;安装各种依赖包, 然后bzr安装, 具体见&lt;em&gt;OpenERP Technical Memento&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;1.1.2 命令行参数&lt;/h3&gt;
+
+&lt;p&gt;./openerp-server –help&lt;/p&gt;
+
+&lt;h3 id=&quot;configuration&quot;&gt;1.1.3 Configuration&lt;/h3&gt;
+
+&lt;p&gt;两个配置文件: &lt;em&gt;~/.openerprc&lt;/em&gt;; &lt;em&gt;~/.openerp_serverrc&lt;/em&gt;. 如果没有发现, 说明服务器和客户端用默认配置启动. 服务端配置文件可以使用&lt;em&gt;./openerp-server -s&lt;/em&gt;或&lt;em&gt;./openerp-server –save&lt;/em&gt;创建.&lt;/p&gt;
+
+&lt;p&gt;还可以通过命令行参数指定配置文件: &lt;em&gt;-c CONFIG&lt;/em&gt;; &lt;em&gt;-config=CONFIG&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;addons&quot;&gt;配置addons位置&lt;/h4&gt;
+
+&lt;p&gt;addons默认在&lt;em&gt;server/bin/addons&lt;/em&gt;, 源码安装的在&lt;em&gt;openerp/addons&lt;/em&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在addons目录创建连接;&lt;/li&gt;
+  &lt;li&gt;启动server时用命令行参数设定: &lt;em&gt;–addons-path=ADDONS_PATH&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;start-up&quot;&gt;1.1.4 Start-up脚本&lt;/h3&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;1.2 架构&lt;/h2&gt;
+
+&lt;h3 id=&quot;openerp&quot;&gt;1.2.1 多端三层架构的OpenERP&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;数据库层用于数据存储&lt;/li&gt;
+  &lt;li&gt;应用层处理各种功能性工作&lt;/li&gt;
+  &lt;li&gt;表示层提供用户接口&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;OpenERP系统由三部分组成:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;包含所有OpenERP数据库的PostgreSQL数据库服务器. 数据库中保存了所有的应用数据, 以及很多OpenERP系统配置数据. 可以部署为集群数据库;&lt;/li&gt;
+  &lt;li&gt;OpenERP服务器, 包括所有的企业逻辑并确保OpenERP runs optimally. OEM引擎用于与PostgreSQL数据库交互, Web层用于服务器与web浏览器之间交互. 可以部署多服务器, 例如使用负载平衡的多服务器互联;&lt;/li&gt;
+  &lt;li&gt;client是一个javascript应用, 运行在web浏览器中.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Server - ORM&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;ORM层是OpenERP的一个非常突出的特性. 在PostgreSQL之上提供了必须及额外的功能. 数据模型使用Python描述, OpenERP使用ORM来创建下层的数据库表. RDBMS的特性, 例如唯一性约束, 有效的查询等, 都可以通过Python灵活地完成, 例如Python编写的约束可以添加到任意的模型上.&lt;/p&gt;
+
+&lt;p&gt;利用ORM可以获得:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;强力的有效性检查从而保证了一致性;&lt;/li&gt;
+  &lt;li&gt;对象级别的接口, 从而能够更有效地设计和实现模块;&lt;/li&gt;
+  &lt;li&gt;各个用户和组的低级别上的安全保证;&lt;/li&gt;
+  &lt;li&gt;资源组的复杂动作;&lt;/li&gt;
+  &lt;li&gt;提供继承服务从而使新的资源能够更好地建模.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Server - Web&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;现在Web层是一个基于&lt;em&gt;werkzeug&lt;/em&gt;的WSGI兼容应用.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Modules&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;OpenERP服务器是核心, 对于企业来说, OpenERP的价值在于它的各个功能模块. 模块用来实现各种商务需求.&lt;/p&gt;
+
+&lt;h3 id=&quot;mvc&quot;&gt;1.2.2 MVC架构&lt;/h3&gt;
+
+&lt;p&gt;略…&lt;/p&gt;
+
+&lt;h3 id=&quot;wsgi&quot;&gt;1.2.3 网络通信及WSGI&lt;/h3&gt;
+
+&lt;p&gt;OpenERP是一个HTTP的web服务, 也可以部署为一个WSGI兼容应用.&lt;/p&gt;
+
+&lt;p&gt;WSGI是Python生态系统中用于编写HTTP服务, 应用及中间件的解决方案标准.&lt;/p&gt;
+
+</content>
+ </entry>
  
  <entry>
    <title>Openerp Dev Notes (0). Pycharm Setting</title>

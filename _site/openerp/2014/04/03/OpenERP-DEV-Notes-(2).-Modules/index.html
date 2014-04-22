@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>
       
-        Openerp Notes(2). Setting Up Openerp -
+        Openerp Dev Notes (2). Modules -
       
       两招
     </title>
@@ -138,7 +138,7 @@
           
 <div class="page-header">
   <h1>
-    Openerp Notes(2). Setting Up Openerp 
+    Openerp Dev Notes (2). Modules 
     
   </h1>
 </div>
@@ -146,64 +146,160 @@
 <div class="row">
   <div class="span8">
     
-<h2 id="opererp">了解OperERP架构</h2>
+<h2 id="modules">1.3 Modules</h2>
 
-<h3 id="postgresql">PostgreSQL</h3>
-<p>开源, 跨平台的ORDMS(object relational database management system), 在BSD风格许可证下发行. 更多信息点击<a href="http://zh.wikipedia.org/wiki/PostgreSQL" title="中文wiki PostgreSQL词条">这里</a>查看.</p>
+<h3 id="section">1.3.1 模块结构</h3>
 
-<h3 id="writing-code-with-python">Writing code with Python</h3>
+<p>一个模块包含以下要素:</p>
 
-<h3 id="following-the-mvc-design">Following the MVC design</h3>
+<p>业务对象: 定义为派生自osv.Model的Python类, 这些资源的持久化由OpenERP的ORM管理.</p>
 
-<h3 id="designing-models">Designing models</h3>
+<p>数据: 保存元数据(视图和工作流定义), 配置数据(模块参数)和demo数据(可选但推荐测试用)的XML/CSV文件.</p>
 
-<p>数据库结构由OpenERP模块定义, 当安装模块时, OpenERP框架根据实体模型定义自动地创建所需的表结构. 并且, OpenERP提供一个web接口, 通过它不需要修改OpenERP源代码就可以扩展数据模型.</p>
+<p>报表: RML(XML 格式)文件. HTML/MAKO或OpenOffice报表模板, 可以与任意类型的业务数据合并, 并产生HTML, ODT或PDF报表.</p>
 
-<h3 id="rendering-views">Rendering views</h3>
+<p><img src="https://lh4.googleusercontent.com/-TUpcoLCQCiw/Uz0bz5OzNiI/AAAAAAAAATg/cei0vdpreug/s800/OE_module_composition.png" alt="OE Module composition" /></p>
 
-<p>OpenERP中的每个view都是使用XML定义的, OpenERP框架负责根据XML内容在浏览器上渲染页面.</p>
+<p>例如, 创建一个’OpenAcademy’模块示例, 需要下列步骤:</p>
 
-<h3 id="authoring-controllers">Authoring controllers</h3>
-<p>架构中的控制器组件可以实现OpenERP应用的业务逻辑和工作流规则. OpenERP中的控制器组件使用Python编写, 保存为OpenERP模块中的一个对象.</p>
+<ul>
+  <li>在source/addons目录下创建一个<em>openacademy</em>子目录;</li>
+  <li>创建一个模块import文件__init__.py文件;</li>
+  <li>创建一个模块清单(manifest)文件__openerp__.py;</li>
+  <li>创建包含对象的Python文件s;</li>
+  <li>创建xml文件定义模块数据, 例如视图, 菜单项或demo数据;</li>
+  <li>选择性地创建报表和工作流定义文件;</li>
+</ul>
 
-<h2 id="section">安装</h2>
+<h4 id="initpy"><strong>init</strong>.py</h4>
 
-<h3 id="section-1">安装包安装</h3>
+<p>Python的import文件, OpenERP模块也是一个标准的Python模块, 这个文件导入该模块所有其他的python文件和子模块. 例如, 如果一个模块仅包含一个名为openacademy.py的文件, <strong>init</strong>.py文件的内容应该是:</p>
 
-<p>简单, 省略.</p>
+<pre><code>import openacademy
+</code></pre>
 
-<h3 id="section-2">源码安装</h3>
+<h4 id="openerppy"><strong>openerp</strong>.py</h4>
 
-<p>首先安装OpenERP的依赖, 例如PostgreSQL, Python及需要的Python库. 然后就可以开始源码安装.</p>
+<p>每个模块目录下必须有这个文件, 这个文件中, 用python的字典确定:</p>
 
-<ol>
-  <li>
-    <p>安装bzr:</p>
+<ul>
+  <li>服务器初始化时需要解析的XML文件;</li>
+  <li>该模块的依赖项;</li>
+  <li>定义额外的元数据.</li>
+</ul>
 
-    <p>$ sudo apt-get install bzr      (Linux)</p>
+<p>这个文件包含的字典中需要有这些key:</p>
 
-    <p>$ sudo brew install bzr         (Mac)</p>
-  </li>
-  <li>
-    <p>获取Installer并执行:</p>
+<blockquote>
+  <p><strong><em>name</em></strong>:             The name of the module in English.</p>
+</blockquote>
 
-    <p>$ bzr cat -d lp:~openerp-dev/openerp-tools/trunk setup.sh | sh</p>
-  </li>
-  <li>
-    <p>安装OpenERP 7.0源码</p>
+<blockquote>
+  <p><strong><em>version</em></strong>:          The version of the module.</p>
+</blockquote>
 
-    <p>$ make init-v70</p>
-  </li>
-</ol>
+<blockquote>
+  <p><strong><em>summary</em></strong>:          Short description or keywords</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>description</em></strong>:      The module description (text).</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>category</em></strong>:         The categrory of the module</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>author</em></strong>:           The author of the module.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>website</em></strong>:          URL of the website of the module.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>license</em></strong>:          The license of the module (default: AGPL-3).</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>depends</em></strong>:          List of modules on which this module depends beside base.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>data</em></strong>:             List of .xml files to load when the module is installed or updated.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>demo</em></strong>:             List of additional .xml files to load when the module is installed or updated and demo flag is active.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>installable</em></strong>:      True or False. Determines whether the module is installable or not.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>auto_install</em></strong>:     True or False (default: False). If set to ‘‘True‘‘, the module is a link module. It will be installed as soon as all its dependencies are installed.</p>
+</blockquote>
+
+<p>例如, <strong>openacademy</strong>模块的__openerp__.py中的字典如下:</p>
+
+<pre><code>{
+    "name" : "OpenAcademy",
+    "version" : "1.0",
+    "author" : "OpenERP SA",
+    "category" : "Tools",
+    "depends" : ["mail"],
+    "data" : [
+        "openacademy_view.xml",
+        "openacademy_data.xml",
+        "report/module_report.xml",
+        "wizard/module_wizard.xml",
+    ],
+    "demo" : [
+            "openacademy_demo.xml"
+    ],
+        "installable": True,
+}
+</code></pre>
+
+<h4 id="objects">对象(Objects)</h4>
+
+<p>OpenERP中, 所有的资源都是对象(Objects), 例如: 发票, partners等. 元数据也是对象: 菜单(menus), 动作(actions), 报表(reports)……对象命名是分层的, 例如:</p>
+
+<ul>
+  <li>account.transfer: a money transfer</li>
+  <li>account.invoice: 一个发票</li>
+  <li>account.invoice.line: 一个发票行</li>
+</ul>
+
+<p>一般情况下, 第一个单词是模块名(account, stock, sale), 这些对象定义为osv.Model的派生类.</p>
+
+<p>可以直接使用SQL语句来操作PostgreSQL数据库, 但是这样做事危险的, 可能会导致数据不一致等等错误.</p>
+
+<h4 id="xml">XML文件</h4>
+
+<p>模块目录下的xml文件用于模块安装/更新时初始化/更新数据库, 例如:</p>
+
+<ul>
+  <li>定义初始和示例数据;</li>
+  <li>定义视图;</li>
+  <li>定义报表;</li>
+  <li>定义工作流;</li>
+</ul>
+
+<p>关于xml文件结构的更多细节见<strong><em>TODO:换成文章链接</em></strong>.</p>
+
+<h4 id="record-tag">Record Tag</h4>
 
     <hr>
     <div class="pagination btn-group">
       
-        <a class="btn prev" href="/machine%20learning/2014/03/13/ML-%281%29.-k%E2%80%94-Nearest-Neighbors" title="Ml (1). K— Nearest Neighbors">&larr; Previous</a>
+        <a class="btn prev" href="/openerp/2014/04/03/OpenERP-DEV-Notes-%281%29.-Getting-started" title="Openerp Dev Notes (1). Getting Started">&larr; Previous</a>
       
         <a class="btn" href="/archive.html">Archive</a>
       
-        <a class="btn next" href="/machine%20learning/2014/03/14/ML-%282%29.-Decision-Trees" title="Ml (2). Decision Trees">Next &rarr;</a>
+        <a class="btn next" href="/openerp/2014/04/03/OpenERP-DEV-Notes-%28x%29.-Tutorial" title="Openerp Dev Notes (x). Tutorial">Next &rarr;</a>
       
     </div>
     <hr>
@@ -233,7 +329,7 @@
   <div class="span4">
     <section>
       <h4>Published</h4>
-      <div class="date"><span>13 March 2014</span></div>
+      <div class="date"><span>03 April 2014</span></div>
     </section>
     
       <section>
