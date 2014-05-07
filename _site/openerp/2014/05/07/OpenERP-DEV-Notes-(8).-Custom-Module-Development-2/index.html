@@ -1,0 +1,552 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      
+        Openerp Dev Notes (8). Custom Module Development 2 -
+      
+      两招
+    </title>
+    
+    <meta name="author" content="Jianhua Zhang">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/hooligan/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/hooligan/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/themes/hooligan/css-social-buttons/css/zocial.stripped.css">
+    <link href="/assets/themes/hooligan/css/pygments.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/hooligan/css/darkstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/hooligan/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+  </head>
+
+  <body>
+    <div id="page-wrap">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="/">两招</a>
+
+            <div class="nav-collapse">
+              <ul class="nav">
+                
+                
+                
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+              </ul>
+              <ul class="nav pull-right social visible-desktop">
+                <li class="divider-vertical"></li>
+                
+                <li>
+                  <a href="https://github.com/jeffzhangfly" class="zocial github icon" target="_blank">
+                    <span class="hidden-desktop">Github</span>
+                  </a>
+                </li>
+                
+                
+                
+                <li>
+                  <a href="https://twitter.com/jeffzhangfly" class="zocial twitter icon" target="_blank">
+                    <span class="hidden-desktop">Twitter</span>
+                  </a>
+                </li>
+                
+                
+                
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="content">
+          
+<div class="page-header">
+  <h1>
+    Openerp Dev Notes (8). Custom Module Development 2 
+    
+  </h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    
+<h1 id="section">编写一个培训管理模块</h1>
+
+<p>参考: <a href="http://www.openerp-china.org/index.php?page=developer">oecn_training</a></p>
+
+<h2 id="section-1">需求描述</h2>
+
+<ol>
+  <li>输入和查询课程,把信息储存到课程对象里</li>
+  <li>课程包含以下信息：名称，价格，天数，开始日期，教师，学员</li>
+  <li>每个课程可以有多个学员，要记录学员的姓名、电话、电子邮件</li>
+  <li>课程可以添加教材和作业等文档附件</li>
+  <li>用户可以设置默认值以加速输入</li>
+  <li>可以按名称查询课程，也可以用其他信息查找课程，并保存常用查询条件</li>
+  <li>可以导出课程信息到excel文件，并支持导入</li>
+  <li>可以按日期查看课程，并调整课程时间</li>
+  <li>老师只能看到自己的课程</li>
+</ol>
+
+<h2 id="section-2">编写课程模块</h2>
+
+<h3 id="pycharm">PyCharm中创建工程</h3>
+
+<p>PyCharm中创建一个工程my_training, 存放在OE addons目录下, 并在该工程中打开OE目录(见之前的文章).</p>
+
+<h3 id="section-3">文件结构</h3>
+
+<p>模块名命名为”my_training”, 目录下四个文件, 如下:</p>
+
+<pre><code>|--my_training
+     |--__init__.py
+     |--__openerp__.py
+     |--lesson.py
+     |--lesson_view.xml
+</code></pre>
+
+<h3 id="initpy">__init__.py</h3>
+
+<p>Python模块描述文件, 每个OE模块也是一个Python模块.</p>
+
+<pre><code># -*- coding: utf-8 -*-
+import lesson
+</code></pre>
+
+<h3 id="openerppy">__openerp__.py</h3>
+
+<pre><code># -*- coding: utf-8 -*-
+{
+    "name": "My Training", #模块名
+    "version": "1.0",        #模块版本
+    "description": 'My Training Demo', #模块说明
+    "author": "Jeff",    #作者
+    "website": "http://www.jeffzhang.cn", #网址
+    "depends": [],                      #依赖的模块
+    "data": ["lesson_view.xml"],
+    "demo": [],
+    "installable": True,                #可否安装
+    'auto_install': False,
+ }
+</code></pre>
+
+<h3 id="lessonpy">lesson.py</h3>
+
+<pre><code># -*- coding: utf-8 &gt;-*-
+
+from openerp.osv import fields, osv
+
+class my_training_lesson(osv.osv):
+    _name = 'my.training.lesson'
+    _discription = u'培训课程示例'
+    _columns = {
+        'name': fields.char(u'课程名',size=64, select=True),
+        'date_start': fields.date(u'开始日期', select=True),
+        'total_day': fields.float(u'总天数', digits=(16,1)),
+        'teacher': fields.many2one('res.users', u'授课老师'),
+        'students': fields.many2many('res.partner', string=u'学生'),
+        'price': fields.float(u'价格', digits=(16,2)),
+    }
+
+my_training_lesson()
+</code></pre>
+
+<h3 id="lessonviewxml">lesson_view.xml</h3>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;openerp&gt;
+    &lt;data&gt;
+    &lt;!--定义表单视图--&gt;
+        &lt;record model="ir.ui.view" id="my_training_lesson_form_view"&gt;
+            &lt;field name="name"&gt;课程表单&lt;/field&gt;
+            &lt;field name="type"&gt;form&lt;/field&gt;
+            &lt;field name="model"&gt;my.training.lesson&lt;/field&gt;
+            &lt;field name="arch" type="xml"&gt;
+                &lt;form string="课程表单"&gt;
+                    &lt;field name="name"/&gt;
+                    &lt;field name="date_start"/&gt;
+                    &lt;field name="total_day"/&gt;
+                    &lt;field name="price"/&gt;
+                    &lt;field name="teacher"/&gt;
+                    &lt;field name="students" colspan="4"/&gt;
+                &lt;/form&gt;
+            &lt;/field&gt;
+        &lt;/record&gt;
+        &lt;!--定义列表视图--&gt;
+        &lt;record model="ir.ui.view" id="my_training_lesson_tree_view"&gt;
+            &lt;field name="name"&gt;课程列表&lt;/field&gt;
+            &lt;field name="type"&gt;tree&lt;/field&gt;
+            &lt;field name="model"&gt;my.training.lesson&lt;/field&gt;
+            &lt;field name="arch" type="xml"&gt;
+                &lt;tree string="课程列表"&gt;
+                    &lt;field name="name"/&gt;
+                    &lt;field name="date_start"/&gt;
+                    &lt;field name="teacher"/&gt;
+                    &lt;field name="price" sum="合计"/&gt;
+                &lt;/tree&gt;
+            &lt;/field&gt;
+        &lt;/record&gt;
+&lt;!--定义视图动作--&gt;
+    &lt;record model="ir.actions.act_window"  id="action_my_training_lesson"&gt;
+        &lt;field name="name"&gt;课程&lt;/field&gt;    &lt;!--这个字符串即课程对应列表或编辑界面的标题--&gt;
+        &lt;field name="res_model"&gt;my.training.lesson&lt;/field&gt;
+        &lt;field name="view_type"&gt;form&lt;/field&gt;
+        &lt;field name="view_mode"&gt;form,tree&lt;/field&gt;
+        &lt;field name="view_id" ref="my_training_lesson_tree_view"/&gt;
+    &lt;/record&gt;
+&lt;!--定义菜单--&gt;
+    &lt;menuitem id="my_menu" name="培训示例"/&gt;
+    &lt;menuitem id="my_training_menu" name="培训" parent="my_menu"/&gt;
+    &lt;menuitem id="my_training_lesson_menu" name="培训课程" parent="my_training_menu" action="action_my_training_lesson"/&gt;
+&lt;/data&gt;
+&lt;/openerp&gt;
+</code></pre>
+
+<h2 id="section-4">通过继承修改模块</h2>
+
+<p>Custom Module Development第一部分中说明了怎么扩展一个系统模块, 这部分扩展刚才编写的课程模块.</p>
+
+<h3 id="pycharm-1">PyCharm中创建工程</h3>
+
+<p>PyCharm中创建一个工程my_training_classroom, 存放在OE addons目录下, 并在该工程中打开OE目录(见之前的文章).</p>
+
+<h3 id="section-5">文件结构</h3>
+
+<p>模块名命名为”my_training_classroom”, 目录下六个文件, 如下:</p>
+
+<pre><code>|--my_training_classroom
+     |--__init__.py
+     |--__openerp__.py
+     |--lesson.py  #继承my.training.lesson对象的文件
+     |--classroom.py
+     |--lesson_view.xml
+     |--classroom_view.xml
+</code></pre>
+
+<h3 id="initpy-1">__init__.py</h3>
+
+<pre><code># -*- coding: utf-8 -*-
+import lesson
+import classroom
+</code></pre>
+
+<h3 id="openerppy-1">__openerp__.py</h3>
+
+<pre><code># -*- coding: utf-8 -*-
+{
+    "name": "My Training Classroom", #模块名
+    "version": "1.0",        #模块版本
+    "description": 'My Training Demo -- ClassRoom', #模块说明
+    "author": "Jeff",    #作者
+    "website": "http://www.jeffzhang.cn", #网址
+    "depends": ["my_training"],                      #依赖的模块
+    "data": [
+        "lesson_view.xml",      # 需要继承的视图
+        "classroom_view.xml",],   # 模块更新时读入的文件
+    "demo": [],
+    "installable": True,                #可否安装
+    'auto_install': False,
+ }
+</code></pre>
+
+<h3 id="classroompy">classroom.py</h3>
+
+<pre><code>from openerp.osv import fields, osv
+
+class my_training_classroom(osv.osv):
+    _name = 'my.training.classroom'
+    _discription = u'教室'
+    _columns = {
+        'number': fields.char(u'编号', size=64, select=True),
+        'capacity': fields.integer(u'容纳人数', select=True),
+        'location': fields.char(u'地点', size=125, select=True),
+    }
+my_training_classroom()
+</code></pre>
+
+<h3 id="lessonpy-1">lesson.py</h3>
+
+<pre><code>from openerp.osv import fields, osv
+
+class my_training_lesson(osv.osv):
+    _name = 'my.training.lesson'  #本对象的名称
+    _inherit = 'my.training.lesson'  #要继承的对象的_name
+    _columns = {
+       'classroom_id': fields.many2one('my.training.classroom', u'教室'), #添加一个教室属性，为多对一对象。
+    }
+
+my_training_lesson()
+</code></pre>
+
+<h3 id="lessonviewxml-1">lesson_view.xml</h3>
+
+<pre><code>&lt;?xml versi&gt;on="1.0" encoding="utf-8"?&gt;
+&lt;openerp&gt;
+    &lt;data&gt;
+        &lt;!--教室--&gt;
+            &lt;record model="ir.ui.view" id="my_training_lesson_from_inherit_classroom_view"&gt;
+            &lt;field name="name"&gt;课程教室继承视图&lt;/field&gt;
+            &lt;field name="type"&gt;form&lt;/field&gt;
+            &lt;field name="model"&gt;my.training.lesson&lt;/field&gt;
+            &lt;field name="inherit_id" ref="my_training.my_training_lesson_from_view"/&gt;
+            &lt;field name="arch" type="xml"&gt;
+                &lt;field name="name" position="after"&gt;
+                    &lt;field name="classroom_id"/&gt;
+                &lt;/field&gt;
+            &lt;/field&gt;
+        &lt;/record&gt;
+    &lt;/data&gt;
+&lt;/openerp&gt;
+</code></pre>
+
+<h3 id="classroomviewxml">classroom_view.xml</h3>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;openerp&gt;
+    &lt;data&gt;
+        &lt;!--教室--&gt;
+            &lt;record model="ir.ui.view" id="my_training_classroom_from_view"&gt;
+            &lt;field name="name"&gt;教室&lt;/field&gt;
+            &lt;field name="type"&gt;form&lt;/field&gt;
+            &lt;field name="model"&gt;my.training.classroom&lt;/field&gt;
+            &lt;field name="arch" type="xml"&gt;
+                &lt;form string="教室表单"&gt;
+                    &lt;field name="number"/&gt;
+                    &lt;field name="capacity"/&gt;
+                    &lt;field name="location" /&gt;
+                &lt;/form&gt;
+            &lt;/field&gt;
+        &lt;/record&gt;
+         &lt;!--定义列表视图--&gt;
+        &lt;record model="ir.ui.view" id="my_training_classroom_tree_view"&gt;
+            &lt;field name="name"&gt;教室列表&lt;/field&gt;
+            &lt;field name="type"&gt;tree&lt;/field&gt;
+            &lt;field name="model"&gt;my.training.classroom&lt;/field&gt;
+            &lt;field name="arch" type="xml"&gt;
+                &lt;tree string="教室列表"&gt;
+                    &lt;field name="number"/&gt;
+                    &lt;field name="capacity" /&gt;
+                    &lt;field name="location" /&gt;
+                &lt;/tree&gt;
+            &lt;/field&gt;
+        &lt;/record&gt;
+&lt;!--定义视图动作--&gt;
+    &lt;record model="ir.actions.act_window"  id="action_my_training_classroom"&gt;
+        &lt;field name="name"&gt;教室&lt;/field&gt;
+        &lt;field name="res_model"&gt;my.training.classroom&lt;/field&gt;
+        &lt;field name="view_type"&gt;form&lt;/field&gt;
+        &lt;field name="view_mode"&gt;form,tree&lt;/field&gt;
+        &lt;field name="view_id" ref="my_training_classroom_tree_view"/&gt;
+    &lt;/record&gt;
+&lt;!--定义菜单--&gt;
+        &lt;menuitem id="my_training_classroom_menu" name="教室" parent="my_training.my_training_menu" action="action_my_training_classroom"/&gt;
+    &lt;/data&gt;
+&lt;/openerp&gt;
+</code></pre>
+
+
+    <hr>
+    <div class="pagination btn-group">
+      
+        <a class="btn prev" href="/openerp/2014/05/05/OpenERP-DEV-FAQ.-Invalid-XML-for-View-Architecture" title="Openerp Dev Faq. Invalid Xml For View Architecture">&larr; Previous</a>
+      
+        <a class="btn" href="/archive.html">Archive</a>
+      
+        <a class="btn next disabled">Next &rarr;</a>
+      
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jeffzhangfly'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <section>
+      <h4>Published</h4>
+      <div class="date"><span>07 May 2014</span></div>
+    </section>
+    
+      <section>
+        <h4>Category</h4>
+        <span class="category">
+          OpenERP
+        </span>
+      </section>
+         
+    
+      <section>
+        <h4>Tags</h4>
+        <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Python-ref">Python <span>14</span></a></li>
+     
+    	<li><a href="/tags.html#OpenERP-ref">OpenERP <span>14</span></a></li>
+    
+  
+
+
+
+        </ul>
+      </section>
+             
+  </div>
+</div>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+
+        </div>
+      </div> <!-- /container -->
+
+      <div class="footer-push"></div>
+    </div><!--/.page-wrap -->
+
+    <footer>
+      <div class="container">
+      </p>
+      </p>
+      <p>&copy; 2014<a href http://www.jeffzhang.cn> Jianhua Zhang</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/hooligan/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/hooligan/bootstrap/js/bootstrap.min.js"></script>
+
+    
+  </body>
+</html>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+

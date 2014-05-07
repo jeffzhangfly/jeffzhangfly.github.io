@@ -8,7 +8,11 @@ http://www.jeffzhang.cn/rss.xml
 http://www.jeffzhang.cn/sitemap.txt
 http://www.jeffzhang.cn/tags.html
 
+http://www.jeffzhang.cn/openerp/2014/05/07/OpenERP-DEV-Notes-%288%29.-Custom-Module-Development-2
+http://www.jeffzhang.cn/openerp/2014/05/05/OpenERP-DEV-FAQ.-Invalid-XML-for-View-Architecture
+http://www.jeffzhang.cn/openerp/2014/05/04/OpenERP-DEV-Notes-%287%29.-Custom-Module-Development-1
 http://www.jeffzhang.cn/openerp/2014/04/22/OpenERP-DEV-Notes-%28x%29.-Tutorial
+http://www.jeffzhang.cn/openerp/2014/04/22/OpenERP-DEV-Notes-%283%29.-Objects-Fields-and-Methods
 http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-%282%29.-Modules-structure
 http://www.jeffzhang.cn/openerp/2014/04/03/OpenERP-DEV-Notes-%281%29.-Getting-started
 http://www.jeffzhang.cn/openerp/2014/04/01/OpenERP-DEV-Notes-%280%29.-PyCharm-Setting

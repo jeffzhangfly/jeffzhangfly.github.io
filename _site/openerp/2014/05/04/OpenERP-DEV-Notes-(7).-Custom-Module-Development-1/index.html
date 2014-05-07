@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      
+        Openerp Dev Notes (7). Custom Module Development 1 -
+      
+      两招
+    </title>
+    
+    <meta name="author" content="Jianhua Zhang">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/assets/themes/hooligan/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/hooligan/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/themes/hooligan/css-social-buttons/css/zocial.stripped.css">
+    <link href="/assets/themes/hooligan/css/pygments.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/hooligan/css/darkstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/hooligan/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+
+    <!-- fav and touch icons -->
+    <!-- Update these with your own images
+      <link rel="shortcut icon" href="images/favicon.ico">
+      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    -->
+  </head>
+
+  <body>
+    <div id="page-wrap">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+
+            <a class="brand" href="/">两招</a>
+
+            <div class="nav-collapse">
+              <ul class="nav">
+                
+                
+                
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">Archive</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">Categories</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/pages.html">Pages</a></li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">Tags</a></li>
+      	
+      
+    
+  
+
+
+
+              </ul>
+              <ul class="nav pull-right social visible-desktop">
+                <li class="divider-vertical"></li>
+                
+                <li>
+                  <a href="https://github.com/jeffzhangfly" class="zocial github icon" target="_blank">
+                    <span class="hidden-desktop">Github</span>
+                  </a>
+                </li>
+                
+                
+                
+                <li>
+                  <a href="https://twitter.com/jeffzhangfly" class="zocial twitter icon" target="_blank">
+                    <span class="hidden-desktop">Twitter</span>
+                  </a>
+                </li>
+                
+                
+                
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="content">
+          
+<div class="page-header">
+  <h1>
+    Openerp Dev Notes (7). Custom Module Development 1 
+    
+  </h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    
+<h2 id="section">目标</h2>
+
+<ul>
+  <li>OpenERP模块基本结构</li>
+  <li>使用模块添加额外的字段(Date Required和Rush Order)</li>
+  <li>扩展视图, 让OpenERP能够显示新的字段</li>
+  <li>修改用于OpenERP工作流的可用状态</li>
+</ul>
+
+<h2 id="openerp">创建第一个OpenERP模块</h2>
+<p>不修改OE源码情况下写自己的模块扩展OE是OpenERP框架一个很好的特性. 我们所做的所有修改都放在我们自己的目录, 自己的文件中.</p>
+
+<p>每个OE模块能够被OE框架正确认识并安装, 一旦成功安装了我们的模块, OE框架将会用该模块的功能扩展OE.</p>
+
+<h2 id="oe">指定一个目录保存我们的OE模块</h2>
+
+<p>两种方式:</p>
+
+<ul>
+  <li>在OE的addons目录下保存我们的模块;</li>
+  <li>创建一个独立的目录保存我们的模块, 这种方式的有点是能够将OE标准模块与我们的模块分开.</li>
+</ul>
+
+<p>对于第二种方式, 需要修改OE的配置文件:</p>
+
+<pre><code>[options]
+admin_passwd = admin
+db_user = jeff
+db_password = greater
+addons_path = /home/openerp/server/addons,/home/mymodules
+</code></pre>
+
+<p>这样, home目录下的mymodules目录中保存我们定制的OE模块.</p>
+
+<h2 id="section-1">模块目录内容</h2>
+
+<p>在OE的addos目录下(addons_path中设定)创建一个目录silkworm保存我们的silkworm模块. 在silkworm目录下创建两个文件:</p>
+
+<ul>
+  <li>__init__.py</li>
+  <li>__openerp__.py</li>
+</ul>
+
+<p>__init__.py文件的目的是指定该模块中想要包含的Python文件(不用管文件的扩展名).</p>
+
+<pre><code>import silkworm
+</code></pre>
+
+<p>__openerp__.py文件是OE模块的清单文件, 向OE框架说明该模块的一些属性. 这个文件有时也被称为模块描述文件, 用Python中的字典(dictionary)描述.</p>
+
+<pre><code>{
+       'name': 'Screen Printing',
+       'version': '1.0',
+       'description': """
+       This module adds functionality for
+            screen printing companies
+       """,
+       'author': 'Greg Moss',
+       'depends': ['base','sale'],
+       'data': ['silkworm_view.xml'],
+       'demo': [],
+       'installable': True,
+       'auto_install': False,
+}
+</code></pre>
+
+<p>在安装OpenERP模块时, __openerp__.py文件给出框架配置该模块所需的各种信息.</p>
+
+<ul>
+  <li>name: 显示在OpenERP模块列表中;</li>
+  <li>version: 模块版本号;</li>
+  <li>description: 安装模块时显示;</li>
+  <li>author: 作者;</li>
+  <li>depends: 前面几项(name, version等)是用于文档的说明性的元素, depends告诉框架这个模块是建构在哪些其他模块基础上的. 至少要依赖于base, 本例中因为扩展了sales order系统, 所以也要依赖于sale模块;</li>
+  <li>data: 指定模块的xml视图文件. 如果希望改变OE的forms或UI, 创建一个视图文件. 其他类型的数据文件也可以在这里指定, 例如包含初始化数据或访问权限的数据. 本例中只有一个文件silkworm_view.xml文件;</li>
+  <li>demo: OE提供了一种方便的方式来包含定制模块的说明数据, 本例中留空, 但是如果希望在模块安装时可以添加一些说明数据, 用这项指定;</li>
+  <li>installable: 使用此项可以临时禁止一个模块的安装;</li>
+  <li>auto_install: 如果此项为True, OE将会在该模块的所有依赖项安装好之后自动安装这个模块, 大部分情况下不会指定自动安装.</li>
+</ul>
+
+<h2 id="silkwormpyopenerp">silkworm.py中扩展OpenERP模型</h2>
+
+<p>为了向我们的sales order添加Date Required和Rush Order字段, 首先创建silkworm.py文件, 然后添加下面的代码到silkworm.py文件中:</p>
+
+<pre><code>from openerp.osv import osv, fields
+
+class silkworm_sale_order(osv.Model):
+    _inherit = 'sale.order'
+    _columns = {
+       'x_daterequired': fields.date('Date Required', required=True),
+       'x_rush': fields.boolean('Rush Order'),
+        }
+</code></pre>
+
+<h3 id="sales-order">继承sales order</h3>
+
+<p>代码中, 创建了一个silkworm_sale_order类, 派生自osv.Model, Python的OO继承.</p>
+
+<p>_inherit_ = ‘sale.order’, 这一句指出这个类继承了sale.order, OpenERP的继承.</p>
+
+<p>_columns字典列出了我们向sales order模块添加的两个自定义字段.</p>
+
+<h3 id="sales-order-1">将自定义字段添加到sales order视图中</h3>
+
+<p>__openerp__.py文件中的’data’制定了视图xml文件, silkworm_viwe.xml.</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+   &lt;openerp&gt;
+       &lt;data&gt;
+          &lt;record id="sale_view_order_form" model="ir.ui.view"&gt;
+            &lt;field name="model"&gt;sale.order&lt;/field&gt;
+            &lt;field name="inherit_id" ref="sale.view_order_form"/&gt;
+            &lt;field name="arch" type="xml"&gt;
+              &lt;field name="client_order_ref" position="after"&gt;
+                &lt;field name="x_daterequired"/&gt;
+                &lt;field name="x_rush"/&gt;
+              &lt;/field&gt;
+            &lt;/field&gt;
+       &lt;/record&gt;
+    &lt;/data&gt;
+&lt;/openerp&gt;
+</code></pre>
+
+<p>OE中的视图定义使用XML语法. OE视图文件用openerp标记包裹, 下一级是data标记. 为了在自定义的OE模块中修改或添加视图, 添加record标记.</p>
+
+<pre><code>&lt;record id="sale_view_order_form" model="ir.ui.view"&gt;
+</code></pre>
+
+<p>每一个record必须有一个id属性, 另外这里我们指定了这个record的model属性为ir.ui.view.</p>
+
+<pre><code>&lt;field name="model"&gt;sale.order&lt;/field&gt;
+</code></pre>
+
+<p>接下来, 应该指定这个record对应的model, 本例中为sale.order, 因为我们为sale.order添加了字段. 如果我们为purchase order添加了字段, 那这里就应该是purchase.order.</p>
+
+<blockquote>
+  <p>在OE的开发模式下, 鼠标移动到字段上可以查看该字段所属的模型; 在开发模式下的Manage Views中, 也可以发现想要使用的view的名字. 这些功能可以方便OpenERP的模块开发.</p>
+</blockquote>
+
+<pre><code>&lt;field name="inherit_id" ref="sale.view_order_form"/&gt;
+</code></pre>
+
+<p>类似于我们的模型派生自sale.model, 我们的视图也应该从sale.view_order_form视图派生而来, 这样我们可以增加一些自定义的字段. 开发模式下使用”Manage Views”查看这些信息.</p>
+
+<pre><code>&lt;field name="arch" type="xml"&gt;
+</code></pre>
+
+<p><em>arch</em>项是所有视图改变都需要的, 不需要知道为什么, 用吧.</p>
+
+<p>接下来就到了给新增的自定义字段指定显示位置了.</p>
+
+<pre><code>&lt;field name="client_order_ref" position="after"&gt;
+</code></pre>
+
+<p>添加字段到form上时, 应该明确地确定这个字段应该放在什么位置. 例如上面的那行代码, 告诉OpenERP框架首先找到<em>client_order_ref</em>字段, 然后在它的后面(<em>position=”after”</em>)显示增加的两个字段.</p>
+
+<p><em>client_order_ref</em>字段怎么找到的? 只需要激活OE的开发者模式(OE的关于对话框中激活), 打开相应的view, 然后将鼠标悬停在字段的label上即可在tooltip上显示出来.</p>
+
+<pre><code>&lt;field name="x_daterequired"/&gt;
+&lt;field name="x_rush"/&gt;
+</code></pre>
+
+<p>上面这两句向form中添加我们新增的字段显示.</p>
+
+<h2 id="section-2">安装模块</h2>
+
+<p>这个例子很简单, 仅仅把两个字段添加到了sales order form中, 这个模块目录中有四个文件:</p>
+
+<ul>
+  <li>__init__.py</li>
+  <li>__openerp__.py</li>
+  <li>silkworm.py</li>
+  <li>silkworm_view.xml</li>
+</ul>
+
+<h3 id="section-3">参数设定</h3>
+
+<pre><code>OpenERP addons_path设定
+首先./openerp-server -s, 在$HOME/下生成.openerp-serverrc文件, 修改其中的addons_path选项, 增加addons目录. 这里要注意, 多个路径之间用逗号分隔并且不能有空格.
+</code></pre>
+
+<h3 id="section-4">安装</h3>
+
+<p>需要该用户启用了技术特性(设置-&gt;用户-&gt;编辑-&gt;访问权限-&gt;勾选”技术特性”).</p>
+
+<p>首先”设置-&gt;更新技术特性”, 然后输入过滤关键字找到模块安装. 安装后打开一个sale order(销售订单), 可以看到在”客户关联单号(client_order_ref)”后增加了两个新的字段.</p>
+
+<pre><code>注意: 安装模块时, 不要使用Modules菜单节中的Apps项, 该项仅显示OpenERP的app repository中的标准模块.
+</code></pre>
+
+
+    <hr>
+    <div class="pagination btn-group">
+      
+        <a class="btn prev" href="/openerp/2014/04/22/OpenERP-DEV-Notes-%28x%29.-Tutorial" title="Openerp Dev Notes (x). Tutorial">&larr; Previous</a>
+      
+        <a class="btn" href="/archive.html">Archive</a>
+      
+        <a class="btn next" href="/openerp/2014/05/05/OpenERP-DEV-FAQ.-Invalid-XML-for-View-Architecture" title="Openerp Dev Faq. Invalid Xml For View Architecture">Next &rarr;</a>
+      
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jeffzhangfly'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  
+  <div class="span4">
+    <section>
+      <h4>Published</h4>
+      <div class="date"><span>04 May 2014</span></div>
+    </section>
+    
+      <section>
+        <h4>Category</h4>
+        <span class="category">
+          OpenERP
+        </span>
+      </section>
+         
+    
+      <section>
+        <h4>Tags</h4>
+        <ul class="tag_box">
+          
+          
+
+
+  
+     
+    	<li><a href="/tags.html#Python-ref">Python <span>14</span></a></li>
+     
+    	<li><a href="/tags.html#OpenERP-ref">OpenERP <span>14</span></a></li>
+    
+  
+
+
+
+        </ul>
+      </section>
+             
+  </div>
+</div>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
+
+        </div>
+      </div> <!-- /container -->
+
+      <div class="footer-push"></div>
+    </div><!--/.page-wrap -->
+
+    <footer>
+      <div class="container">
+      </p>
+      </p>
+      <p>&copy; 2014<a href http://www.jeffzhang.cn> Jianhua Zhang</a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/themes/hooligan/js/jquery.min.js"><\/script>')</script>
+    <script src="/assets/themes/hooligan/bootstrap/js/bootstrap.min.js"></script>
+
+    
+  </body>
+</html>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  jax: ["input/TeX", "output/HTML-CSS"],
+  tex2jax: {
+    inlineMath: [ ['$', '$'] ],
+    displayMath: [ ['$$', '$$']],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  messageStyle: "none",
+  "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+
