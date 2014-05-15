@@ -1,157 +1,57 @@
 
 <!DOCTYPE html>
-<html lang="tr">
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7 ie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8 ie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9 ie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Pages</title>
+	<meta name="author" content="Jianhua Zhang">
+	<link href='/assets/themes/the-program/css/style.css' rel="stylesheet" media="all">
+	<link href="http://feeds.feedburner.com/" rel="alternate" title="Pages" type="application/atom+xml">
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+</head>
+<body>
 
-<! -- header.html -->
-<meta charset="utf-8">
-<title>Pages</title>
+<div id="page" class="hentry">
+	<header class="the-header">
+		<div class="unit-head">
+			<div class="unit-inner unit-head-inner">
+				<nav class="nav-global">
+					<ul>
+						<li class="logo"><a href="/">两招</a></li>
+						<li class="archive"><a href="/archive.html">archive</a></li>
+						<li class="page"><a href="/pages.html">pages</a></li>
+						<li class="category"><a href="/categories.html">categories</a></li>
+						<li class="tag"><a href="/tags.html">tags</a></li>
+						<li class="forkme"><div><iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=plusjade&repo=jekyll-bootstrap&type=fork&count=true"
+									allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe></div></li>
+					</ul>
+				</nav>
+			</div><!-- unit-inner -->
+		</div><!-- unit-head -->
+	</header>
+	<div class="body" role="main">
+		<div class="unit-body">
+			<div class="unit-inner unit-body-inner">
+				<div class="entry-content">
+					
+<article class="unit-article layout-page">
+	<div class="unit-inner unit-article-inner">
+		<div class="content">
+			<header>
+				<div class="unit-head">
+					<div class="unit-inner unit-head-inner">
+						<h1 class="h2 entry-title">Pages</h1>
+					</div><!-- unit-inner -->
+				</div><!-- unit-head -->
+			</header>
 
-<meta name="author" content="Jianhua Zhang">
-
-<!-- Enable responsive viewport -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-<!--[if lt IE 9]>
- <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-<!-- Le styles -->
-<link href="/assets/themes/dbyll/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="/assets/themes/dbyll/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="/assets/themes/dbyll/resources/bootstrap.vertical-tabs/bootstrap.vertical-tabs.css" rel="stylesheet">
-<link href="/assets/themes/dbyll/resources/syntax/syntax.css" rel="stylesheet">
-<link href="/assets/themes/dbyll/css/style.css" rel="stylesheet">
-
-<!-- Le fav and touch icons -->
-<!-- Update these with your own images
-<link rel="shortcut icon" href="images/favicon.ico">
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
--->
-
-<!-- atom & rss feed -->
-<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
-<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
-<! -- header.html end -->
-
-
-	<body>
-
-        <nav class="navbar navbar-default visible-xs" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                
-                <a type="button" class="navbar-toggle nav-link" href="http://github.com/jeffzhangfly">
-                    <i class="fa fa-github"></i>
-                </a>
-                
-                
-                <a type="button" class="navbar-toggle nav-link" href="http://twitter.com/jeffzhangfly">
-                    <i class="fa fa-twitter"></i>
-                </a>
-                
-                
-                <a class="navbar-brand" href="/">
-                    <img src="http://www.gravatar.com/avatar/2e59448c9436175520e6c5c4a536825f?s=35" class="img-circle" />
-                    两招
-                </a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/categories.html">Categories</a></li>
-            <li><a href="/tags.html">Tags</a></li>
-            </ul>
-            </div><!-- /.navbar-collapse -->
-        </nav>
-
-        <!-- nav-menu-dropdown -->
-        <div class="btn-group hidden-xs" id="nav-menu">
-           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-             <i class="fa fa-bars"></i>
-           </button>
-           <ul class="dropdown-menu" role="menu">
-             <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-             <li><a href="/categories.html"><i class="fa fa-folder"></i> Categories</a></li>
-             <li><a href="/tags.html"><i class="fa fa-tags"></i> Tags</a></li>
-               <li class="divider"></li>
-             <li><a href="#"><i class="fa fa-arrow-up"></i> Top of Page</a></li>
-           </ul>
-        </div>
-
-		<div class="col-sm-3 sidebar hidden-xs">
-			<! -- sidebar.html -->
-<header class="sidebar-header" role="banner">
-	<a href="/">
-		<img src="http://www.gravatar.com/avatar/2e59448c9436175520e6c5c4a536825f?s=150" class="img-circle" />
-	</a>
-	<h3 class="title">
-        <a href="/">两招</a>
-    </h3>
-</header>
-
-
-<div id="bio" class="text-center">
-	Fly
-</div>
-
-
-<div id="contact-list" class="text-center">
-	<ul class="list-unstyled list-inline">
-		
-		<li>
-			<a class="btn btn-default btn-sm" href="https://github.com/jeffzhangfly">
-				<i class="fa fa-github-alt fa-lg"></i>
-			</a>
-		</li>
-		
-		
-		<li>
-			<a class="btn btn-default btn-sm" href="https://twitter.com/jeffzhangfly">
-				<i class="fa fa-twitter fa-lg"></i>
-			</a>
-		</li>
-		
-		
-	</ul>
-	<ul id="contact-list-secondary" class="list-unstyled list-inline">
-		
-		
-		<li>
-			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/jeffzhangfly">
-				<i class="fa fa-linkedin fa-lg"></i>
-			</a>
-		</li>
-		
-		<li>
-			<a class="btn btn-default btn-sm" href="/rss.xml">
-				<i class="fa fa-rss fa-lg"></i>
-			</a>
-		</li>
-	</ul>
-</div>
-
-<! -- sidebar.html end -->
-
-		</div>
-
-		<div class="col-sm-9 col-sm-offset-3">
-			
-<div class="page-header">
-  <h1>Pages </h1>
-</div>
-
-
+			<div class="bd">
+				<div class="entry-content">
+					
 
 <h2>All Pages</h2>
 <ul>
@@ -229,27 +129,65 @@
 
 </ul>
 
+				</div><!-- entry-content -->
+			</div><!-- bd -->
+
+			<footer class="unit-foot">
+				<div class="unit-inner unit-foot-inner">
+					<p class="gotop">
+						<a href="#page">Back to Top</a>
+					</p>
+				</div>
+			</footer>
+
+		</div><!-- content -->
+	</div><!-- unit-inner -->
+</article>
 
 
+				</div>
+			</div><!-- unit-inner -->
+		</div><!-- unit-body -->
+	</div><!-- body -->
+	<footer class="the-footer">
+		<div class="unit-foot">
+			<div class="unit-inner unit-foot-inner">
+				<div class="misc vcard">
+					<h4>About</h4>
+					<ul>
+            <!-- <li class="contact"><address><span class="author fn n">Jianhua Zhang</span> - <span class="fn email"></span></address></li> -->
+						<li class="github"><a href="http://github.com/jeffzhangfly/" rel="me">github.com/jeffzhangfly</a></li>
+						<li class="twitter"><a href="http://twitter.com/jeffzhangfly/" rel="me">twitter.com/jeffzhangfly</a></li>
+						<li class="rss"><a href="http://feeds.feedburner.com/">Subscribe to RSS Feed</a></li>
+					</ul>
+				</div><!-- misc -->
+				<p class="licence">
+        <!-- Theme: <a href="http://layouts-the.me">the_minimum</a> based on <a href="http://jekyllbootstrap.com/">Jekyll-bootstrap</a>.<br> -->
+        <!-- Powered by <a href="https://github.com/mojombo/jekyll">Jekyll</a>. -->
+					© 2014 Jianhua Zhang
+				</p>
+			</div><!-- unit-foot-inner -->
+		</div><!-- unit-foot -->
+	</footer>
+</div><!-- page -->
+<script>
+	(function(d, s) {
+		var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+		if (d.getElementById(id)) {return;}
+		js = d.createElement(s); js.src = url; js.id = id;
+		fjs.parentNode.insertBefore(js, fjs);
+		};
+	load('//platform.twitter.com/widgets.js', 'tweetjs');
+	// load('https://apis.google.com/js/plusone.js', 'gplus1js'); // Checkout http://j.mp/ApDgMr for usage html for this is <div class="g-plusone" data-size="medium"></div>
+	// load('//connect.facebook.net/en_US/all.js#xfbml=1', 'fbjssdk'); // Checkout http://j.mp/wZw2xR for using open graph protorol html for this is <div class="fb-like" data-href="/pages.html" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
+	}(document, 'script'));
+</script>
+<script>
+/*! A fix for the iOS orientationchange zoom bug.Script by @scottjehl, rebound by @wilto. MIT License.*/
+(function(j){var i=j.document;if(!i.querySelectorAll){return}var l=i.querySelectorAll("meta[name=viewport]")[0],a=l&&l.getAttribute("content"),h=a+", maximum-scale=1.0",d=a+", maximum-scale=10.0",g=true,c=j.orientation,k=0;if(!l){return}function f(){l.setAttribute("content",d);g=true}function b(){l.setAttribute("content",h);g=false}function e(m){c=Math.abs(j.orientation);k=Math.abs(m.gamma);if(k>8&&c===0){if(g){b()}}else{if(!g){f()}}}j.addEventListener("orientationchange",f,false);j.addEventListener("deviceorientation",e,false)})(this);
+</script>
 
-			<!-- footer.html -->
-<footer>
- <hr/>
- <p>&copy; 2014 Jianhua Zhang
- </p>
-</footer>
-
-<!-- footer.html end -->
-
-
-		</div>
-
-	
-	<script type="text/javascript" src="/assets/themes/dbyll/resources/jquery/jquery.min.js"></script>
-	<script type="text/javascript" src="/assets/themes/dbyll/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/assets/themes/dbyll/js/app.js"></script>
-	</body>
-
+  
+</body>
 </html>
-
 
