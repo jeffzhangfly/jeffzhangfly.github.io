@@ -98,7 +98,7 @@ tags : [Python, OpenERP]
 
 ###将自定义字段添加到sales order视图中
 
-\_\_openerp\_\_.py文件中的'data'制定了视图xml文件, silkworm_viwe.xml.
+\_\_openerp\_\_.py文件中的'data'指定了视图xml文件, silkworm_view.xml.
 
     <?xml version="1.0" encoding="utf-8"?>
        <openerp>
@@ -167,7 +167,7 @@ OE中的视图定义使用XML语法. OE视图文件用openerp标记包裹, 下�
 
 需要该用户启用了技术特性(设置->用户->编辑->访问权限->勾选"技术特性").
 
-首先"设置->更新技术特性", 然后输入过滤关键字找到模块安装. 安装后打开一个sale order(销售订单), 可以看到在"客户关联单号(client_order_ref)"后增加了两个新的字段.
+首先"设置->更新模块列表", 然后输入过滤关键字找到模块安装. 安装后打开一个sale order(销售订单), 可以看到在"客户关联单号(client_order_ref)"后增加了两个新的字段.
 
     注意: 安装模块时, 不要使用Modules菜单节中的Apps项, 该项仅显示OpenERP的app repository中的标准模块.
 
