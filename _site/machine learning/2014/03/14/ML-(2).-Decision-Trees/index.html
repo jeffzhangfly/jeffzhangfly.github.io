@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<! -- header.html -->
+<meta charset="utf-8">
+<title>Ml (2). Decision Trees</title>
+
+<meta name="author" content="Jianhua Zhang">
+
+<!-- Enable responsive viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+ <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Le styles -->
+<link href="/assets/themes/dbyll/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/resources/bootstrap.vertical-tabs/bootstrap.vertical-tabs.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/resources/syntax/syntax.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/css/style.css" rel="stylesheet">
+
+<!-- Le fav and touch icons -->
+<!-- Update these with your own images
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+-->
+
+<!-- atom & rss feed -->
+<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+<! -- header.html end -->
+
+
+	<body>
+
+        <nav class="navbar navbar-default visible-xs" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a type="button" class="navbar-toggle nav-link" href="http://github.com/jeffzhangfly">
+                    <i class="fa fa-github"></i>
+                </a>
+                
+                
+                <a type="button" class="navbar-toggle nav-link" href="http://twitter.com/jeffzhangfly">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                
+                
+                <a class="navbar-brand" href="/">
+                    <img src="http://www.gravatar.com/avatar/2e59448c9436175520e6c5c4a536825f?s=35" class="img-circle" />
+                    两招
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <!-- nav-menu-dropdown -->
+        <div class="btn-group hidden-xs" id="nav-menu">
+           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+             <i class="fa fa-bars"></i>
+           </button>
+           <ul class="dropdown-menu" role="menu">
+             <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+             <li><a href="/categories.html"><i class="fa fa-folder"></i> Categories</a></li>
+             <li><a href="/tags.html"><i class="fa fa-tags"></i> Tags</a></li>
+               <li class="divider"></li>
+             <li><a href="#"><i class="fa fa-arrow-up"></i> Top of Page</a></li>
+           </ul>
+        </div>
+
+		<div class="col-sm-3 sidebar hidden-xs">
+			<! -- sidebar.html -->
+<header class="sidebar-header" role="banner">
+	<a href="/">
+		<img src="http://www.gravatar.com/avatar/2e59448c9436175520e6c5c4a536825f?s=150" class="img-circle" />
+	</a>
+	<h3 class="title">
+        <a href="/">两招</a>
+    </h3>
+</header>
+
+
+<div id="bio" class="text-center">
+	Fly
+</div>
+
+
+<div id="contact-list" class="text-center">
+	<ul class="list-unstyled list-inline">
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://github.com/jeffzhangfly">
+				<i class="fa fa-github-alt fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://twitter.com/jeffzhangfly">
+				<i class="fa fa-twitter fa-lg"></i>
+			</a>
+		</li>
+		
+		
+	</ul>
+	<ul id="contact-list-secondary" class="list-unstyled list-inline">
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/jeffzhangfly">
+				<i class="fa fa-linkedin fa-lg"></i>
+			</a>
+		</li>
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="/rss.xml">
+				<i class="fa fa-rss fa-lg"></i>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<! -- sidebar.html end -->
+
+		</div>
+
+		<div class="col-sm-9 col-sm-offset-3">
+			
+<article>
+	<div class="page-header">
+	  <h1>Ml (2). Decision Trees </h1>
+	</div>
+
+	<div class="col-sm-10">
+        <span class="post-date">
+            
+            March
+            14th,
+            
+            2014
+        </span>
+
+        <div class="article_body">
+            
+<h2 id="section">概述</h2>
+
+<p>下图是一个假想的邮件分类决策树.</p>
+
+<p><img src="https://lh6.googleusercontent.com/-6AQJcHDG3Ps/UyJQG3oQ5TI/AAAAAAAAANs/IdP8KE3Yb5s/s800/decision-trees.png" alt="A decision tree in flowchart form" title="A decision tree in flowchart form" /></p>
+
+<pre><code>优点: 低计算复杂度, 结果容易理解, 缺失值不敏感, 能够处理不相关特征数据;
+缺点: 易过度适应(Prone to overfitting);
+适用: 数值, 标称值.
+</code></pre>
+
+<p>适用于:</p>
+
+<ul>
+  <li>数据实例由”属性-值”对构成;</li>
+  <li>目标函数具有离散的输出值;</li>
+  <li>可能需要析取的描述(disjunctive description), 因为决策树自然地代表了析取表达式;</li>
+  <li>训练数据可能包含错误, 决策树对错误具有良好的健壮性;</li>
+  <li>训练数据可以包含缺少属性值的实例, 例如某些样本缺少重量的属性数据.</li>
+</ul>
+
+<h2 id="section-1">构造决策树</h2>
+
+<p>首先, 找到用于划分数据类别的特征项; 然后, 以此特征项分割不同类数据; 最后, 判断分割后的数据是否还能够分割, 如果可以, 再次重复这个过程.</p>
+
+<p>伪码:
+<script src="https://gist.github.com/jeffzhangfly/9540406.js"></script></p>
+
+<h3 id="section-2">流程</h3>
+
+<p>套用机器学习的几个步骤: 收集数据, 准备输入数据, 分析输入数据, 训练算法, 测试算法, 使用算法.</p>
+
+<pre><code>1. 收集: 任意方法;
+2. 准备: 连续型数据需要首先离散化;
+3. 分析: 任意方法, 构造完成后visually inspect the tree;
+4. 训法: 构造一个决策树的数据结构;
+5. 测试: 计算错误率;
+6. 使用: ...
+</code></pre>
+
+<h3 id="section-3">信息增益</h3>
+
+<p>划分数据集要以将数据变得更有序/有组织(more organized)为标准. 使用信息论,检测数据分割前后的信息变化, 分割前后信息发生的变化即信息增益, 以信息增益最高为标准, 可以确定采用哪个特征来分隔数据最好.</p>
+
+<h3 id="entropy">熵(entropy)</h3>
+
+<p>熵的概念最早起源于物理学，用于度量一个热力学系统的无序程度。在信息论里面，熵是对不确定性的测量。</p>
+
+<p>如果某个事物可能的分类有多个, 那么事物属于某个类别$x_i$的信息定义为</p>
+
+<script type="math/tex; mode=display">l(x_i)=-\log_2p(x_i)</script>
+
+<p>$p(x_i)$是事物属于这个类别的概率.</p>
+
+<p>熵定义为信息的期望值, 即所有位置的所有信息的期望值.</p>
+
+<script type="math/tex; mode=display">H=-\sum_{i=1}^np(x_i)\log_2p(x_i)</script>
+
+<h3 id="section-4">算法</h3>
+
+<ul>
+  <li><a href="http://zh.wikipedia.org/zh/ID3算法" title="ID3">ID3</a></li>
+  <li><a href="http://zh.wikipedia.org/wiki/C4.5算法" title="C4.5">C4.5</a></li>
+</ul>
+
+<h3 id="section-5">过度拟合</h3>
+
+<p>定义: 给定一个假设空间$H$, 一个假设$h\in H$, 如果存在其他的假设$h^{\prime}\in H$, 使得在训练样例上$h$的错误率比$h^{\prime}$小, 但在整体实例分布上$h^{\prime}$的错误率比$h$小, 那么就说假设$h$过度拟合(overfit)训练数据.</p>
+
+<p>解决过度拟合的思路分两类:</p>
+
+<ul>
+  <li>在完美分类训练数据之前就停止树的增长;</li>
+  <li>后修剪法(post-proune), 即允许树过度拟合, 然后再对这个树进行修剪.</li>
+</ul>
+
+<p>最普遍的一种方法: 训练和验证集(training and validation set)法. 可用的数据被分为训练集合和验证集合两个样例集合, 前者用来形成学习到的假设, 后者用来对假设并进行评估和修剪.</p>
+
+        </div>
+
+        
+        <ul class="tag_box list-unstyled list-inline">
+          <li><i class="fa fa-folder-open"></i></li>
+          
+          
+            
+                <li><a href="/categories.html#machine learning-ref">
+                    machine learning <span>(3)</span>
+                    
+                </a></li>
+            
+          
+        </ul>
+        
+
+        
+        <ul class="list-inline">
+          <li><i class="fa fa-tags"></i></li>
+          
+          
+            
+                <li>
+                    <a href="/tags.html#Classification-ref">
+                    Classification <span>(2)</span>
+                    
+                    </a>
+                </li>
+            
+          
+          
+        </ul>
+        
+
+        <hr>
+
+        <ul class="pager">
+          
+          <li class="previous"><a href="/openerp/2014/03/13/OpenERP-Notes%282%29.-Setting-Up-OpenERP" title="Openerp Notes(2). Setting Up Openerp">&larr; Previous</a></li>
+          
+          
+          <li class="next"><a href="/openerp/2014/03/16/OpenERP-Notes%283%29.-Starting-Your-First-Company" title="Openerp Notes(3). Starting Your First Company">Next &rarr;</a></li>
+          
+        </ul>
+
+        <hr>
+        
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jeffzhangfly'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+	</div>
+	
+	<div class="col-sm-2 sidebar-2">
+	
+	</div>
+</article>
+<div class="clearfix"></div>
+
+
+
+			<!-- footer.html -->
+<footer>
+ <hr/>
+ <p>&copy; 2014 Jianhua Zhang
+ </p>
+</footer>
+
+<!-- footer.html end -->
+
+
+		</div>
+
+	
+	<script type="text/javascript" src="/assets/themes/dbyll/resources/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/themes/dbyll/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/themes/dbyll/js/app.js"></script>
+	</body>
+
+</html>
+
+

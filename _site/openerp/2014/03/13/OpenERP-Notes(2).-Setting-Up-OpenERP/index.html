@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<! -- header.html -->
+<meta charset="utf-8">
+<title>Openerp Notes(2). Setting Up Openerp</title>
+
+<meta name="author" content="Jianhua Zhang">
+
+<!-- Enable responsive viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+ <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Le styles -->
+<link href="/assets/themes/dbyll/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/resources/bootstrap.vertical-tabs/bootstrap.vertical-tabs.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/resources/syntax/syntax.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/css/style.css" rel="stylesheet">
+
+<!-- Le fav and touch icons -->
+<!-- Update these with your own images
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+-->
+
+<!-- atom & rss feed -->
+<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+<! -- header.html end -->
+
+
+	<body>
+
+        <nav class="navbar navbar-default visible-xs" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a type="button" class="navbar-toggle nav-link" href="http://github.com/jeffzhangfly">
+                    <i class="fa fa-github"></i>
+                </a>
+                
+                
+                <a type="button" class="navbar-toggle nav-link" href="http://twitter.com/jeffzhangfly">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                
+                
+                <a class="navbar-brand" href="/">
+                    <img src="http://www.gravatar.com/avatar/2e59448c9436175520e6c5c4a536825f?s=35" class="img-circle" />
+                    两招
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <!-- nav-menu-dropdown -->
+        <div class="btn-group hidden-xs" id="nav-menu">
+           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+             <i class="fa fa-bars"></i>
+           </button>
+           <ul class="dropdown-menu" role="menu">
+             <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+             <li><a href="/categories.html"><i class="fa fa-folder"></i> Categories</a></li>
+             <li><a href="/tags.html"><i class="fa fa-tags"></i> Tags</a></li>
+               <li class="divider"></li>
+             <li><a href="#"><i class="fa fa-arrow-up"></i> Top of Page</a></li>
+           </ul>
+        </div>
+
+		<div class="col-sm-3 sidebar hidden-xs">
+			<! -- sidebar.html -->
+<header class="sidebar-header" role="banner">
+	<a href="/">
+		<img src="http://www.gravatar.com/avatar/2e59448c9436175520e6c5c4a536825f?s=150" class="img-circle" />
+	</a>
+	<h3 class="title">
+        <a href="/">两招</a>
+    </h3>
+</header>
+
+
+<div id="bio" class="text-center">
+	Fly
+</div>
+
+
+<div id="contact-list" class="text-center">
+	<ul class="list-unstyled list-inline">
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://github.com/jeffzhangfly">
+				<i class="fa fa-github-alt fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://twitter.com/jeffzhangfly">
+				<i class="fa fa-twitter fa-lg"></i>
+			</a>
+		</li>
+		
+		
+	</ul>
+	<ul id="contact-list-secondary" class="list-unstyled list-inline">
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/jeffzhangfly">
+				<i class="fa fa-linkedin fa-lg"></i>
+			</a>
+		</li>
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="/rss.xml">
+				<i class="fa fa-rss fa-lg"></i>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<! -- sidebar.html end -->
+
+		</div>
+
+		<div class="col-sm-9 col-sm-offset-3">
+			
+<article>
+	<div class="page-header">
+	  <h1>Openerp Notes(2). Setting Up Openerp </h1>
+	</div>
+
+	<div class="col-sm-10">
+        <span class="post-date">
+            
+            March
+            13th,
+            
+            2014
+        </span>
+
+        <div class="article_body">
+            
+<h2 id="opererp">了解OperERP架构</h2>
+
+<h3 id="postgresql">PostgreSQL</h3>
+<p>开源, 跨平台的ORDMS(object relational database management system), 在BSD风格许可证下发行. 更多信息点击<a href="http://zh.wikipedia.org/wiki/PostgreSQL" title="中文wiki PostgreSQL词条">这里</a>查看.</p>
+
+<h3 id="writing-code-with-python">Writing code with Python</h3>
+
+<h3 id="following-the-mvc-design">Following the MVC design</h3>
+
+<h3 id="designing-models">Designing models</h3>
+
+<p>数据库结构由OpenERP模块定义, 当安装模块时, OpenERP框架根据实体模型定义自动地创建所需的表结构. 并且, OpenERP提供一个web接口, 通过它不需要修改OpenERP源代码就可以扩展数据模型.</p>
+
+<h3 id="rendering-views">Rendering views</h3>
+
+<p>OpenERP中的每个view都是使用XML定义的, OpenERP框架负责根据XML内容在浏览器上渲染页面.</p>
+
+<h3 id="authoring-controllers">Authoring controllers</h3>
+<p>架构中的控制器组件可以实现OpenERP应用的业务逻辑和工作流规则. OpenERP中的控制器组件使用Python编写, 保存为OpenERP模块中的一个对象.</p>
+
+<h2 id="section">安装</h2>
+
+<h3 id="section-1">安装包安装</h3>
+
+<p>简单, 省略.</p>
+
+<h3 id="section-2">源码安装</h3>
+
+<p>首先安装OpenERP的依赖, 例如PostgreSQL, Python及需要的Python库. 然后就可以开始源码安装.</p>
+
+<ol>
+  <li>
+    <p>安装bzr:</p>
+
+    <p>$ sudo apt-get install bzr      (Linux)</p>
+
+    <p>$ sudo brew install bzr         (Mac)</p>
+  </li>
+  <li>
+    <p>获取Installer并执行:</p>
+
+    <p>$ bzr cat -d lp:~openerp-dev/openerp-tools/trunk setup.sh | sh</p>
+  </li>
+  <li>
+    <p>安装OpenERP 7.0源码</p>
+
+    <p>$ make init-v70</p>
+  </li>
+</ol>
+
+        </div>
+
+        
+        <ul class="tag_box list-unstyled list-inline">
+          <li><i class="fa fa-folder-open"></i></li>
+          
+          
+            
+                <li><a href="/categories.html#openerp-ref">
+                    openerp <span>(15)</span>
+                    
+                </a></li>
+            
+          
+        </ul>
+        
+
+        
+        <ul class="list-inline">
+          <li><i class="fa fa-tags"></i></li>
+          
+          
+            
+                <li>
+                    <a href="/tags.html#Python-ref">
+                    Python <span>(15)</span>
+                    ,
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags.html#OpenERP-ref">
+                    OpenERP <span>(15)</span>
+                    
+                    </a>
+                </li>
+            
+          
+          
+        </ul>
+        
+
+        <hr>
+
+        <ul class="pager">
+          
+          <li class="previous"><a href="/machine%20learning/2014/03/13/ML-%281%29.-k%E2%80%94-Nearest-Neighbors" title="Ml (1). K— Nearest Neighbors">&larr; Previous</a></li>
+          
+          
+          <li class="next"><a href="/machine%20learning/2014/03/14/ML-%282%29.-Decision-Trees" title="Ml (2). Decision Trees">Next &rarr;</a></li>
+          
+        </ul>
+
+        <hr>
+        
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jeffzhangfly'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+	</div>
+	
+	<div class="col-sm-2 sidebar-2">
+	
+	</div>
+</article>
+<div class="clearfix"></div>
+
+
+
+			<!-- footer.html -->
+<footer>
+ <hr/>
+ <p>&copy; 2014 Jianhua Zhang
+ </p>
+</footer>
+
+<!-- footer.html end -->
+
+
+		</div>
+
+	
+	<script type="text/javascript" src="/assets/themes/dbyll/resources/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/themes/dbyll/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/themes/dbyll/js/app.js"></script>
+	</body>
+
+</html>
+
+

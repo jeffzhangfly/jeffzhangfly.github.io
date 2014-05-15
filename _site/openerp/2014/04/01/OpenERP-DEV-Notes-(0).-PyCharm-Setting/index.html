@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+
+<! -- header.html -->
+<meta charset="utf-8">
+<title>Openerp Dev Notes (0). Pycharm Setting</title>
+
+<meta name="author" content="Jianhua Zhang">
+
+<!-- Enable responsive viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+ <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Le styles -->
+<link href="/assets/themes/dbyll/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/resources/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/resources/bootstrap.vertical-tabs/bootstrap.vertical-tabs.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/resources/syntax/syntax.css" rel="stylesheet">
+<link href="/assets/themes/dbyll/css/style.css" rel="stylesheet">
+
+<!-- Le fav and touch icons -->
+<!-- Update these with your own images
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+-->
+
+<!-- atom & rss feed -->
+<link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+<link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+<! -- header.html end -->
+
+
+	<body>
+
+        <nav class="navbar navbar-default visible-xs" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a type="button" class="navbar-toggle nav-link" href="http://github.com/jeffzhangfly">
+                    <i class="fa fa-github"></i>
+                </a>
+                
+                
+                <a type="button" class="navbar-toggle nav-link" href="http://twitter.com/jeffzhangfly">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                
+                
+                <a class="navbar-brand" href="/">
+                    <img src="http://www.gravatar.com/avatar/2e59448c9436175520e6c5c4a536825f?s=35" class="img-circle" />
+                    两招
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/categories.html">Categories</a></li>
+            <li><a href="/tags.html">Tags</a></li>
+            </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <!-- nav-menu-dropdown -->
+        <div class="btn-group hidden-xs" id="nav-menu">
+           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+             <i class="fa fa-bars"></i>
+           </button>
+           <ul class="dropdown-menu" role="menu">
+             <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+             <li><a href="/categories.html"><i class="fa fa-folder"></i> Categories</a></li>
+             <li><a href="/tags.html"><i class="fa fa-tags"></i> Tags</a></li>
+               <li class="divider"></li>
+             <li><a href="#"><i class="fa fa-arrow-up"></i> Top of Page</a></li>
+           </ul>
+        </div>
+
+		<div class="col-sm-3 sidebar hidden-xs">
+			<! -- sidebar.html -->
+<header class="sidebar-header" role="banner">
+	<a href="/">
+		<img src="http://www.gravatar.com/avatar/2e59448c9436175520e6c5c4a536825f?s=150" class="img-circle" />
+	</a>
+	<h3 class="title">
+        <a href="/">两招</a>
+    </h3>
+</header>
+
+
+<div id="bio" class="text-center">
+	Fly
+</div>
+
+
+<div id="contact-list" class="text-center">
+	<ul class="list-unstyled list-inline">
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://github.com/jeffzhangfly">
+				<i class="fa fa-github-alt fa-lg"></i>
+			</a>
+		</li>
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://twitter.com/jeffzhangfly">
+				<i class="fa fa-twitter fa-lg"></i>
+			</a>
+		</li>
+		
+		
+	</ul>
+	<ul id="contact-list-secondary" class="list-unstyled list-inline">
+		
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="https://linkedin.com/in/jeffzhangfly">
+				<i class="fa fa-linkedin fa-lg"></i>
+			</a>
+		</li>
+		
+		<li>
+			<a class="btn btn-default btn-sm" href="/rss.xml">
+				<i class="fa fa-rss fa-lg"></i>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<! -- sidebar.html end -->
+
+		</div>
+
+		<div class="col-sm-9 col-sm-offset-3">
+			
+<article>
+	<div class="page-header">
+	  <h1>Openerp Dev Notes (0). Pycharm Setting </h1>
+	</div>
+
+	<div class="col-sm-10">
+        <span class="post-date">
+            
+            April
+            1st,
+             
+            2014
+        </span>
+
+        <div class="article_body">
+            
+<h3 id="openerp">导入OpenERP</h3>
+<p>创建一个空的工程作为开发OE模块使用的工程, 然后菜单”File”=&gt;”Open Directory…“选择解压后的OpenERP目录, 目录结构如下图所示.</p>
+
+<p><img src="https://lh5.googleusercontent.com/-SuINzxaUs20/Uzon9hnAMwI/AAAAAAAAASE/2ygcEVRN5mg/s800/oe_tree.png" alt="OE Tree" title="OE Tree" /></p>
+
+<p>在PyCharm中展开工程, 将install子目录下的”openerp-server.conf”拷贝到新加入的openerp根目录下, 并打开进行相应的修改.</p>
+
+<h3 id="section">启动运行</h3>
+<p>在工程目录树根上找到”openerp-server”, 右键选择”Run ‘openerp-server’“启动服务器, 如果弹出错误, 可能是PostgreSQL没有启动或依赖的Python模块没有安装.</p>
+
+<h3 id="python">调试Python</h3>
+<p>在工程目录树根上找到”openerp-server”, 右键选择”Debug ‘openerp-server’“以调试模式启动服务器. 如果设置了断点, 就会在运行到断点处停下来.
+注意Run和Debug前一定要确定只有一个OE服务器实例启动.</p>
+
+<h3 id="javascript">调试JavaScript</h3>
+<p>PyCharm里选择”Edit Configurations…”.</p>
+
+<p><img src="https://lh3.googleusercontent.com/-3st6TTwlwrs/UzowxGPghnI/AAAAAAAAATI/-WI5KCYOs6Y/s800/oe_debug_js_1.png" alt="Debug JavaScript 1" /></p>
+
+<p>然后在打开的窗口中选择”+”增加一个JavaScript的Debug设置.</p>
+
+<p><img src="https://lh3.googleusercontent.com/-V9UEgj2xfeE/UzowxBmEH_I/AAAAAAAAATI/YfsVMWMudyg/s800/oe_debug_js_2.png" alt="Debug JavaScript 2" /></p>
+
+<p>然后按下图中设定.</p>
+
+<p><img src="https://lh4.googleusercontent.com/-J8tF6m38H3A/UzowxEvpZNI/AAAAAAAAATI/qCB8pmaXH9Y/s800/oe_debug_js_3.png" alt="Debug JavaScript 3" /></p>
+
+<p>设定好这些后, 启动openerp-server(Run或Debug均可), 然后选择js debug启动debug.  提示安装Chrome的JetBrains IDE Support支持插件, 安装之. 安装后的Chrome打开OE后如下图所示.</p>
+
+<p><img src="https://lh3.googleusercontent.com/-hgR7chEljWs/UzowzMYMBGI/AAAAAAAAATI/xxQxga7dypY/s800/oe_debug_js_4.png" alt="Debug JavaScript 4" /></p>
+
+
+        </div>
+
+        
+        <ul class="tag_box list-unstyled list-inline">
+          <li><i class="fa fa-folder-open"></i></li>
+          
+          
+            
+                <li><a href="/categories.html#openerp-ref">
+                    openerp <span>(15)</span>
+                    
+                </a></li>
+            
+          
+        </ul>
+        
+
+        
+        <ul class="list-inline">
+          <li><i class="fa fa-tags"></i></li>
+          
+          
+            
+                <li>
+                    <a href="/tags.html#Python-ref">
+                    Python <span>(15)</span>
+                    ,
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/tags.html#OpenERP-ref">
+                    OpenERP <span>(15)</span>
+                    
+                    </a>
+                </li>
+            
+          
+          
+        </ul>
+        
+
+        <hr>
+
+        <ul class="pager">
+          
+          <li class="previous"><a href="/openerp/2014/03/21/OpenERP-Notes%285%29.-Purchasing-with-OpenERP" title="Openerp Notes(5). Purchasing With Openerp">&larr; Previous</a></li>
+          
+          
+          <li class="next"><a href="/openerp/2014/04/03/OpenERP-DEV-Notes-%281%29.-Getting-started" title="Openerp Dev Notes (1). Getting Started">Next &rarr;</a></li>
+          
+        </ul>
+
+        <hr>
+        
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'jeffzhangfly'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+	</div>
+	
+	<div class="col-sm-2 sidebar-2">
+	
+	</div>
+</article>
+<div class="clearfix"></div>
+
+
+
+			<!-- footer.html -->
+<footer>
+ <hr/>
+ <p>&copy; 2014 Jianhua Zhang
+ </p>
+</footer>
+
+<!-- footer.html end -->
+
+
+		</div>
+
+	
+	<script type="text/javascript" src="/assets/themes/dbyll/resources/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/assets/themes/dbyll/resources/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/assets/themes/dbyll/js/app.js"></script>
+	</body>
+
+</html>
+
+
