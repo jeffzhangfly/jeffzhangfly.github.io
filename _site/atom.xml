@@ -4,7 +4,7 @@
  <title>两招</title>
  <link href="http://www.jeffzhang.cn/" rel="self"/>
  <link href="http://www.jeffzhang.cn"/>
- <updated>2014-05-15T16:58:31+08:00</updated>
+ <updated>2014-05-15T17:03:55+08:00</updated>
  <id>http://www.jeffzhang.cn</id>
  <author>
    <name>Jianhua Zhang</name>
@@ -2228,9 +2228,9 @@ system to organize and report business transactions. In many ERP systems, the ac
  
  <entry>
    <title>Yaahp</title>
-   <link href="http://www.jeffzhang.cn/ahp/2012/05/06/yaahp"/>
+   <link href="http://www.jeffzhang.cn/mcda/2012/05/06/yaahp"/>
    <updated>2012-05-06T00:00:00+08:00</updated>
-   <id>http://www.jeffzhang.cn/ahp/2012/05/06/yaahp</id>
+   <id>http://www.jeffzhang.cn/mcda/2012/05/06/yaahp</id>
    <content type="html">
 &lt;p&gt;&lt;em&gt;yaahp&lt;/em&gt; is a decision analysis software based on analytic hierarchical process (AHP).&lt;/p&gt;
 
