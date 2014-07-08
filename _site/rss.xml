@@ -5,10 +5,56 @@
         <description>两招 - Jianhua Zhang</description>
         <link>http://www.jeffzhang.cn</link>
         <link>http://www.jeffzhang.cn</link>
-        <lastBuildDate>2014-06-07T10:56:09+08:00</lastBuildDate>
-        <pubDate>2014-06-07T10:56:09+08:00</pubDate>
+        <lastBuildDate>2014-07-06T15:52:43+08:00</lastBuildDate>
+        <pubDate>2014-07-06T15:52:43+08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Javascript Notes</title>
+                <description>
+&lt;h3 id=&quot;html--css--javascript&quot;&gt;1. 内容: HTML; 外观: CSS; 行为: JavaScript.&lt;/h3&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;2. 变量的使用:&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;声明变量;&lt;/li&gt;
+  &lt;li&gt;初始化变量.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;3. 比较&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1 == ‘1’ : true&lt;/li&gt;
+  &lt;li&gt;1 === ‘1’ : false    三个等号的不进行任何转换.&lt;/li&gt;
+  &lt;li&gt;!= 和 !=== 类似.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;nan-&quot;&gt;4. NaN不等于任何东西, 包括它自己.&lt;/h3&gt;
+
+&lt;h3 id=&quot;undefined&quot;&gt;5. undefined&lt;/h3&gt;
+
+&lt;p&gt;试图访问不存在的变量时, 就会得到一个undefined, JavaScript将声明时没有初始化的变量设为undefined.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;6. 数组&lt;/h3&gt;
+
+&lt;p&gt;广义表.&lt;/p&gt;
+
+&lt;p&gt;var a= [1,2,3]&lt;/p&gt;
+
+&lt;p&gt;a[2] : 3&lt;/p&gt;
+
+&lt;p&gt;a[3] = ‘three’ : [1, 2, 3, “three”]&lt;/p&gt;
+
+&lt;p&gt;a[6] = ‘new’ : [1, 2, 3, “three”,undefined, undefined, “new”]&lt;/p&gt;
+
+&lt;p&gt;delete a[2] : [1, 2, undefined, “three”,undefined, undefined, “new”]&lt;/p&gt;
+
+</description>
+                <link>http://www.jeffzhang.cn/development/2014/07/06/JavaScript-Notes</link>
+                <guid>http://www.jeffzhang.cn/development/2014/07/06/JavaScript-Notes</guid>
+                <pubDate>2014-07-06T00:00:00+08:00</pubDate>
+        </item>
 
         <item>
                 <title>Maintenance Policy Tips</title>

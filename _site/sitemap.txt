@@ -8,6 +8,7 @@ http://www.jeffzhang.cn/rss.xml
 http://www.jeffzhang.cn/sitemap.txt
 http://www.jeffzhang.cn/tags.html
 
+http://www.jeffzhang.cn/development/2014/07/06/JavaScript-Notes
 http://www.jeffzhang.cn/phm&mro/2014/06/06/Maintenance-Policy-Tips
 http://www.jeffzhang.cn/software%20engineering/2014/05/15/Scrum-summary
 http://www.jeffzhang.cn/openerp/2014/05/14/OpenERP-Notes%2811%29.-workflows-in-OpenERP
